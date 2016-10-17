@@ -1,0 +1,41 @@
+<div>
+  <h1>MAKING THE WORLD A BIT HEALTHIER...ONE SUGGESTION AT A TIME!</h1>
+  <h2>{{ctrl.currentSuggestion}}</h2>
+
+  <select id="mySelect"
+    ng-model="ctrl.currentNutrChoice"
+    ng-options="choice.name for choice in ctrl.data">
+  </select>
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr ng-repeat="(key,value) in ctrl.currentNutrChoice">
+        <td>
+          {{key}}
+        </td>
+        <td>
+          {{value}}
+        </td>
+      </tr>
+      <tr>
+        <button ng-click="ctrl.addFood()">Add</button>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr ng-repeat="food in ctrl.dailyFoods">
+        <td>{{food.name}}</td>
+        <td>{{food.calories}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <input type="text" placeholder="What food are we looking for today?" ng-model="ctrl.query" />
+  <button type="button" ng-click="ctrl.getResults()">Search</button>
+</div>
+<div>
+  <h3>{{ ctrl.results }}</h3>
+</div>

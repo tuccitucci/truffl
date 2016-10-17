@@ -1,0 +1,16 @@
+{
+  "name": "truffl",
+  "version": "0.1.0",
+  "description": "Track your health, eat your truffles.",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "npm update",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "nutritionix": "^0.6.1",
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "gulp-html-replace": "^1.5.4"
+  }
+}
