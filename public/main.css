@@ -88,5 +88,17 @@ form {
 }
 
 input, button, select, textarea {
-  color: green;
+  color: #999999;
+}
+
+li.ng-scope {
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    margin-left: -40px;
+}
+
+.searchbox {
+  width: 200px;
+  text-align: center;
 }

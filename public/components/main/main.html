@@ -41,8 +41,10 @@
 </div> -->
 <div ng-controller="Autocompleter as auto">
             <section class="searchBox">
-                <input type="text" ng-model="auto.searchTerm" ng-keyup="auto.doSearch()"/>
+                <input class="searchbox" type="text" placeholder="What have you eaten today?" ng-model="auto.searchTerm" ng-keyup="auto.doSearch()"/>
+
                 <div class="searchDropdown">
+                  <br />
                     <ul>
                         <li ng-repeat="data in auto.searchData">
                             <p ng-repeat="attrs in data">
