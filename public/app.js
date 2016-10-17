@@ -7,7 +7,7 @@ function myRouter($stateProvider, $urlRouterProvider) {
     $stateProvider.state('main', {
             url: '/',
             templateUrl: 'components/main/main.html',
-            controller: 'mainCtrl as ctrl'
+            controller: 'Autocompleter as ctrl'
         })
         .state('signup', {
             url: '/signup',

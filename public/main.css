@@ -1,16 +1,20 @@
 body {
-    background:url('https://static.pexels.com/photos/140928/pexels-photo-140928.jpeg');
-    padding:40px;
-    background-size: auto;
+    background-image: url("/photocase0tmfuqa43.jpg");
+    padding:60px;
+    background-size: cover;
     height:100%;
+    width:100%;
     background-repeat: no-repeat;
     text-align: center;
     color: white;
+    font-family: 'Oswald', sans-serif;
+
 }
 
-h1 {
+h2 {
   text-align: center;
   color: white;
+  /*background-color: rgba(255,255,255,.6);*/
 }
 
 
@@ -30,11 +34,25 @@ h1 {
 
 
 .navbar {
-  background-color: #97ABB1;
+  background-color: rgba(255,255,255,.0);
+
+}
+.navbar-default .navbar-brand {
+  color: white;
 }
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: blue;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
 .active > a {
   background color: blue;
+}
+.navbar navbar-default navbar-fixed-top ng-scope {
+  padding: 10px;
 }
 /*.navbar-brand {
   background-image: url("http://www.truffl.io/assets/logo.png");
@@ -67,4 +85,8 @@ label {
 
 form {
   color: black;
+}
+
+input, button, select, textarea {
+  color: green;
 }
