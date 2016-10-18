@@ -1,0 +1,29 @@
+<div
+     class="search"
+     ng-cloak>
+ <md-content>
+     <form ng-submit="$event.preventDefault()">
+         <md-autocomplete
+             ng-disabled="search.isDisabled"
+             md-no-cache="search.noCache"
+             md-selected-item="search.selectedItem"
+             md-search-text-change="search.searchTextChange(search.searchText)"
+             md-search-text="search.searchText"
+             md-selected-item-change="search.selectedItemChange(item)"
+             md-items="item in search.querySearch(search.searchText)"
+             md-item-text="item.fields.item_name"
+             md-min-length="3"
+             placeholder="Search for food">
+           <md-item-template>
+             <span md-highlight-text="search.searchText" md-highlight-flags="^i">{{item.fields.item_name}}</span>
+           </md-item-template>
+           <md-not-found>
+             We found none of that foods. Add it to your reciepe book <a href="#">here</a>!
+           </md-not-found>
+         </md-autocomplete>
+          <md-input-container flex>
+            <md-button class="md-raised" aria-label="Eat cake" ng-click="search.addFood()">Add</md-button>
+          </md-input-container>
+     </form>
+   </md-content>
+</div>

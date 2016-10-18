@@ -1,73 +1,60 @@
-<div>
-  <br />
-  <br />
-  <br />  <br />
-    <br />
-
+<div ng-controller="searchCtrl as search">
   <h2>MAKING THE WORLD A BIT HEALTHIER...ONE SUGGESTION AT A TIME!</h2>
-  <br />
-  <br />
-  <!-- <h2>{{ctrl.currentSuggestion}}</h2> -->
+<table class="table table-bordered">
 
-  <!-- <select id="mySelect"
-    ng-model="ctrl.currentNutrChoice"
-    ng-options="choice.name for choice in ctrl.data">
-  </select>
 
-  <table class="table table-bordered">
+  <tbody>
+        <tr>
+          <td>
+            Calories
+          </td>
+          <td>
+            Vitamin C
+          </td>
+        </tr>
+
+          <tr>
+            <!-- <td ng-repeat="item in ctrl.dailyFoods"
+                ng-init="ctrl.dailyFoods.calValue = ctrl.dailyFoods.calValue + item.nf_calories">
+            {{ ctrl.dailyFoods.calValue }}
+            </td> -->
+            <td>
+              {{ search.totalCal }}
+            </td>
+            <td>
+              {{ search.vitC }} % DV
+            </td>
+          </tr>
+  </tbody>
+</table>
+
+  <div ng-include="'components/search/search.html'"></div>
+
+  <table class="table table-bordered" ng-show="ctrl.dailyFoods.length">
     <tbody>
-      <tr ng-repeat="(key,value) in ctrl.currentNutrChoice">
-        <td>
-          {{key}}
-        </td>
-        <td>
-          {{value}}
-        </td>
-      </tr>
       <tr>
-        <button ng-click="ctrl.addFood()">Add</button>
+        <td>
+          Name
+        </td>
+        <td>
+          Calories
+        </td>
+        <td>
+          Vitamin C
+        </td>
+        <td>
+          Remove?
+        </td>
       </tr>
-    </tbody>
-  </table>
 
-  <table class="table table-bordered">
-    <tbody>
       <tr ng-repeat="food in ctrl.dailyFoods">
-        <td>{{food.name}}</td>
-        <td>{{food.calories}}</td>
+        <td>{{food.item_name}}</td>
+        <td>{{food.nf_calories}}</td>
+        <td>{{food.nf_vitamin_c_dv}}% DV</td>
+        <td><button class="remove" ng-click="ctrl.dailyFoods.splice($index, 1)">X</button></td>
       </tr>
+
+
     </tbody>
   </table>
-</div> -->
-<div ng-controller="Autocompleter as auto">
-            <section class="searchBox">
-                <input class="searchbox" type="text" placeholder="What have you eaten today?" ng-model="auto.searchTerm" ng-keyup="auto.doSearch()"/>
-
-                <div class="searchDropdown">
-                  <br />
-                    <ul>
-                        <li ng-repeat="data in auto.searchData">
-                            <p ng-repeat="attrs in data">
-                                {{ attrs.food_name }}
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-
-
-
-
-<!-- <div>
-  <input type="text" placeholder="What food are we looking for today?" ng-model="ctrl.query" />
-  <button type="button" ng-click="ctrl.getResults()">Search</button><br />
-    <select ng-options="ctrl.Name for ctrl in item.fields.item_name" ng-model="ctrl.query"></select>
 </div>
-<div>
-  <h3 ng-repeat="item in ctrl.results.hits">
-    {{ item.fields.brand_name }}
-    {{ item.fields.item_name }} <br />
-    {{ item.fields.nf_calories }} Calories
-  </h3>
-</div> -->

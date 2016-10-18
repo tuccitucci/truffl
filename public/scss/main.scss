@@ -1,0 +1,92 @@
+@import "../components/search/search";
+
+body {
+  background-image: url("/photocase0tmfuqa43.jpg");
+  padding:60px;
+  background-size: cover;
+  height:100%;
+  width:100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
+
+.parallax {
+  background-image:url("https://static.pexels.com/photos/139751/pexels-photo-139751.jpeg");
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.navbar {
+  background-color: rgba(255,255,255,.0);
+
+}
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: blue;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.active > a {
+  background-color: blue;
+}
+
+.navbar navbar-default navbar-fixed-top ng-scope {
+  padding: 10px;
+}
+
+p {
+  text-align: center;
+}
+
+mark {
+  background-color: #97ABB1;
+}
+
+body > div > div:nth-child(6) > div {
+  background-color: rgba(255,255,255,0.4);
+}
+
+label {
+  color: black;
+}
+
+form {
+  color: black;
+}
+
+input, button, select, textarea {
+  color: #999999;
+}
+
+li.ng-scope {
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  margin-left: -40px;
+}
+
+.searchbox {
+  width: 200px;
+  text-align: center;
+}

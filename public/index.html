@@ -1,54 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 
 <head>
     <title>TRUFFL.IO</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" href="main.css">
+
+    <!-- LIBS -->
     <script src="//code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!-- APP JS -->
     <script src="app.js"></script>
     <script src="core/database.js"></script>
+    <script src="core/DailyList.js"></script>
     <script src="components/main/main.js"></script>
+    <script src="components/nav/nav.js"></script>
+    <script src="components/search/search.js"></script>
 </head>
 
-<body ng-app="myApp">
-  <div class="navbar navbar-default navbar-fixed-top" ng-controller="navCtrl as nCtrl">
-    <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">TRUFFL</a>
-    </div>
-    <center>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">
-                <li ng-class="{'active': nCtrl.isCurrentRoute('main')}">
-                  <a ui-sref="main">HOME</a>
-                </li>
-                <li ng-class="{'active': nCtrl.isCurrentRoute('about')}">
-                  <a ui-sref="about">ABOUT US</a>
-                </li>
-                <li ng-class="{'active': nCtrl.isCurrentRoute('signup')}">
-                  <a ui-sref="signup">SIGN UP</a>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-default">Sign In</button>
-            </form>
-        </div>
-    </center>
-  </div>
+<body ng-controller="mainCtrl as ctrl">
+  <div ng-include="'components/nav/nav.html'"></div>
 
 
   <div class="container">
