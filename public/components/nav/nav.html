@@ -8,18 +8,18 @@
       <a class="navbar-brand" href="#">TRUFFL</a>
   </div>
   <center>
-      <nav class="navbar-collapse collapse" id="navbar-main" data-toggle="collapse" data-target="#navbar-main">
+      <nav class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-              <li ng-class="{'active': ctrl.isCurrentRoute('home')}">
+              <li ng-click="ctrl.toggleNav()" ng-class="{'active': ctrl.isCurrentRoute('home')}">
                 <a ui-sref="home">HOME</a>
               </li>
-              <li ng-class="{'active': ctrl.isCurrentRoute('about')}">
+              <li ng-click="ctrl.toggleNav()" ng-class="{'active': ctrl.isCurrentRoute('about')}">
                 <a ui-sref="about">ABOUT US</a>
               </li>
-              <li ng-class="{'active': ctrl.isCurrentRoute('tryitout')}">
+              <li ng-click="ctrl.toggleNav()" ng-class="{'active': ctrl.isCurrentRoute('tryitout')}">
                 <a ui-sref="tryitout">TRY IT OUT</a>
               </li>
-              <li ng-class="{'active': ctrl.isCurrentRoute('signup')}">
+              <li ng-click="ctrl.toggleNav()" ng-class="{'active': ctrl.isCurrentRoute('signup')}">
                 <a ui-sref="signup">SIGN UP</a>
               </li>
 

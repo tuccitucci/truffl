@@ -1,18 +1,18 @@
 angular.module('myApp')
-  .controller('searchCtrl', searchCtrl);
+  .controller('searchCtrl', searchController);
 
-function searchCtrl($http, $timeout, $q, $log, DailyList) {
-  var self = this;
+function searchController($http, $timeout, $q, $log, DailyList) {
+  var search = this;
 
-  self.querySearch   = querySearch;
-  self.selectedItemChange = selectedItemChange;
-  self.searchTextChange   = searchTextChange;
-  //self.addFood   = addFood;
-  self.selectedItems = [];
-  self.totalCal = 0;
-  self.vitC = 0;
+  search.querySearch   = querySearch;
+  search.selectedItemChange = selectedItemChange;
+  search.searchTextChange   = searchTextChange;
+  //search.addFood   = addFood;
+  search.selectedItems = [];
+  search.totalCal = 0;
+  search.vitC = 0;
 
-  window.self = self;
+  window.search = search;
 
 
   // ******************************
@@ -57,13 +57,13 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
   }
 
   //function addFood() {
-  self.addFood = function() {
-    DailyList.addTo(self.selectedItem.fields);
-    console.log(self.selectedItem.fields.nf_calories)
-    self.totalCal = self.totalCal + self.selectedItem.fields.nf_calories;
-    self.vitC = self.vitC + self.selectedItem.fields.nf_vitamin_c_dv;
-    console.log(self.totalCal)
-    self.selectedItem = null;
+  search.addFood = function() {
+    DailyList.addTo(search.selectedItem.fields);
+    console.log(search.selectedItem.fields.nf_calories)
+    search.totalCal = search.totalCal + search.selectedItem.fields.nf_calories;
+    search.vitC = search.vitC + search.selectedItem.fields.nf_vitamin_c_dv;
+    console.log(search.totalCal)
+    search.selectedItem = null;
     updateSuggestion();
   };
 // test function for calculating column total values
@@ -85,7 +85,7 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
       "Do you have a problem with Vitamin D? No? Good...eat some tuna!",
       "Brussel Sprouts! No? Well figure out something else with Vitamin C to eat!",
     ];
-    self.currentSuggestion = suggestions[Math.floor(Math.random() * (suggestions.length-1)) + 1];
+    search.currentSuggestion = suggestions[Math.floor(Math.random() * (suggestions.length-1)) + 1];
   }
 
   /**
