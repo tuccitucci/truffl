@@ -4,24 +4,24 @@ angular.module('myApp', ['ui.router', 'ngMaterial'])
 function appConfig($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.defaults.cache = true;
 
-    $stateProvider.state('main', {
+    $stateProvider.state('home', {
             url: '/',
-            templateUrl: 'components/main/main.html',
+            templateUrl: 'views/home/home.html',
 
         })
         .state('about', {
             url: '/about',
-            templateUrl: 'components/about/about.html'
+            templateUrl: 'views/about/about.html'
         })
         .state('tryitout', {
             url: '/tryitout',
-            templateUrl: 'components/tryitout/tryitout.html',
+            templateUrl: 'views/tryitout/tryitout.html',
 
         })
         .state('signup', {
             url: '/signup',
-            templateUrl: 'components/signup/signup.html',
-      
+            templateUrl: 'views/signup/signup.html',
+
         });
 
     $urlRouterProvider.otherwise('/');

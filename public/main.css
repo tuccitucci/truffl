@@ -10,6 +10,15 @@
   border-radius: 2px;
   margin: 0; }
 
+.home table {
+  background-color: rgba(83, 72, 79, 0.9); }
+
+.home #container {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative; }
+
 body {
   background-image: url("/photocase0tmfuqa43.jpg");
   padding: 60px;
@@ -82,6 +91,10 @@ li.ng-scope {
   width: 200px;
   text-align: center; }
 
-table {
-  background-color: rgba(66, 44, 45, .9);
-}
+@media only screen and (max-width: 766px) {
+  .collapsing, .in {
+    background-color: #f7f7f7; }
+  .collapsing ul li a, .in ul li a {
+    color: #555 !important; }
+  .collapsing ul li a:hover, .in ul li a:hover {
+    color: #f1f1f1 !important; } }

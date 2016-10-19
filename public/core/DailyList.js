@@ -13,8 +13,8 @@ function DailyListCtrl() {
       service.data.push(item);
     }
 
-    function remove(item) {
-      //remove it
+    function remove(item, index) {
+      service.data.splice(index,1);
       return;
     }
 
