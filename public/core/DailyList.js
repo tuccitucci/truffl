@@ -8,8 +8,8 @@ function DailyListCtrl() {
     service.totals = {
       calories: 0,
       vc: 0,
-      vd: 0,
-      ve: 0
+      calcium: 0,
+      iron: 0
     };
 
     service.addTo = addTo;
@@ -22,10 +22,17 @@ function DailyListCtrl() {
 
     function totalOutCalories(item) {
       service.totals.calories += item.nf_calories;
-      service.vc += item.nf_vitamin_c_dv;
+      service.totals.vc += item.nf_vitamin_c_dv;
+      service.totals.calcium += item.nf_calcium_dv;
+      service.totals.iron += item.nf_iron_dv;
+
     }
 
     function remove(item, index) {
+      service.totals.calories -= item.nf_calories;
+      service.totals.vc -= item.nf_vitamin_c_dv;
+      service.totals.calcium -= item.nf_calcium_dv;
+      service.totals.iron -= item.nf_iron_dv;
       service.data.splice(index,1);
       return;
     }

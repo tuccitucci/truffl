@@ -7,12 +7,14 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
   search.querySearch   = querySearch;
   search.selectedItemChange = selectedItemChange;
   search.searchTextChange   = searchTextChange;
-  //search.addFood   = addFood;
+  // search.addFood   = addFood;
   search.selectedItems = [];
   search.totalCal = 0;
   search.vitC = 0;
+  search.totalCalcium = 0;
+  search.totalIron = 0;
 
-  window.search = search;
+  // window.search = search;
 
 
   // ******************************
@@ -20,8 +22,8 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
   // ******************************
 
   var params = {
-    results:"0:02",
-    fields:"brand_name,item_name,nf_calories,nf_vitamin_c_dv",
+    results:"0:05",
+    fields:"brand_name,item_name,nf_calories,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv",
 
     // Jeff
     // appId:"4a5a17f6",
@@ -38,6 +40,7 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
 
   /**
    * Search for states... use $timeout to simulate
+   * Cache on/off located in app.js
    * remote dataservice call.
    */
    function querySearch (query) {
@@ -55,7 +58,7 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
     $log.info('Item changed to ' + JSON.stringify(item));
   }
 
-  //function addFood() {
+  // function addFood() {
   search.addFood = function() {
     DailyList.addTo(search.selectedItem.fields);
     search.selectedItem = null;

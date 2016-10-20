@@ -2,7 +2,7 @@ angular.module('myApp', ['ui.router', 'ngMaterial'])
     .config(appConfig);
 
 function appConfig($stateProvider, $urlRouterProvider, $httpProvider) {
-    $httpProvider.defaults.cache = true;
+    // $httpProvider.defaults.cache = true;
 
     $stateProvider.state('home', {
             url: '/',
