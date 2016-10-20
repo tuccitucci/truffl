@@ -21,18 +21,18 @@ function DailyListCtrl() {
     }
 
     function totalOutCalories(item) {
-      service.totals.calories += item.nf_calories;
-      service.totals.vc += item.nf_vitamin_c_dv;
-      service.totals.calcium += item.nf_calcium_dv;
-      service.totals.iron += item.nf_iron_dv;
+      service.totals.calories += Math.round(item.nf_calories);
+      service.totals.vc += Math.round(item.nf_vitamin_c_dv);
+      service.totals.calcium += Math.round(item.nf_calcium_dv);
+      service.totals.iron += Math.round(item.nf_iron_dv);
 
     }
 
     function remove(item, index) {
-      service.totals.calories -= item.nf_calories;
-      service.totals.vc -= item.nf_vitamin_c_dv;
-      service.totals.calcium -= item.nf_calcium_dv;
-      service.totals.iron -= item.nf_iron_dv;
+      service.totals.calories -= Math.round(item.nf_calories);
+      service.totals.vc -= Math.round(item.nf_vitamin_c_dv);
+      service.totals.calcium -= Math.round(item.nf_calcium_dv);
+      service.totals.iron -= Math.round(item.nf_iron_dv);
       service.data.splice(index,1);
       return;
     }
