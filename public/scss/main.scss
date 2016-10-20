@@ -138,3 +138,8 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+@media (max-width: 767px) {
+    h2{font-size: 18px;}
+    h3{font-size: 18px;}
+}
