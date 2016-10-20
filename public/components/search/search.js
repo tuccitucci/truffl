@@ -1,7 +1,7 @@
 angular.module('myApp')
-  .controller('searchCtrl', searchController);
+  .controller('SearchCtrl', searchCtrl);
 
-function searchController($http, $timeout, $q, $log, DailyList) {
+function searchCtrl($http, $timeout, $q, $log, DailyList) {
   var search = this;
 
   search.querySearch   = querySearch;
@@ -43,7 +43,6 @@ function searchController($http, $timeout, $q, $log, DailyList) {
    function querySearch (query) {
      return $http.get("https://api.nutritionix.com/v1_1/search/"+ query,{params: params})
        .then(function(response) {
-        //  console.log(response.data.hits);
          return response.data.hits;
        });
    }
@@ -59,24 +58,9 @@ function searchController($http, $timeout, $q, $log, DailyList) {
   //function addFood() {
   search.addFood = function() {
     DailyList.addTo(search.selectedItem.fields);
-    console.log(search.selectedItem.fields.nf_calories)
-    search.totalCal = search.totalCal + search.selectedItem.fields.nf_calories;
-    search.vitC = search.vitC + search.selectedItem.fields.nf_vitamin_c_dv;
-    console.log(search.totalCal)
     search.selectedItem = null;
     updateSuggestion();
   };
-// test function for calculating column total values
-
-  //  function getTotal() {
-  //    var calc = this;
-  //    var total = 0;
-  //    for (var i = 0; i < calc.ctrl.dailyFoods.length; i++) {
-  //      var result = calc.ctrl.dailyFoods[i];
-  //      total += (result.nf_calories[i++])
-  //    }
-  //    return total;
-  //  }
 
   function updateSuggestion() {
     var suggestions = [

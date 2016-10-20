@@ -1,22 +1,49 @@
 angular.module('myApp')
-  .controller("mainCtrl", mainController);
+  .controller("HomeCtrl", homeCtrl);
 
-  function mainController($http, DailyList) {
-      var ctrl = this;
-      var data = {};
-      ctrl.dailyFoods = DailyList.data;
-      ctrl.removeFood = DailyList.remove;
-      ctrl.totalCal = 0;
-      ctrl.vitC = 0;
-      ctrl.currentNutrChoice = null;
-      ctrl.currentSuggestion = null;
-      ctrl.dailyFoods = DailyList.data;
+function homeCtrl($scope, $http, DailyList) {
+  var ctrl = this;
 
-      // data is put on the global scope by the database.js
-      ctrl.data = data;
+  ctrl.dailyFoods = DailyList.data;
+  ctrl.removeFood = DailyList.remove;
+  ctrl.totals = DailyList.totals;
+  ctrl.caloriePercent = 0;
 
+  var calorieAllowance = 2000;
 
+  var circleConfig = {
+    strokeWidth: 6,
+    easing: 'easeInOut',
+    duration: 1400,
+    color: '#FFEA82',
+    trailColor: '#eee',
+    trailWidth: 1,
+    svgStyle: null
+  };
+
+  $scope.$watch('ctrl.dailyFoods', function(newValue,oldValue) {
+    updateGraphs();
+  }, true);
+
+  var barone = new ProgressBar.Circle(circleone, circleConfig);
+  var bartwo = new ProgressBar.Circle(circletwo, circleConfig);
+  var barthree = new ProgressBar.Circle(circlethree, circleConfig);
+  var barfour = new ProgressBar.Circle(circlefour, circleConfig);
+
+  function updateGraphs() {
+    // Need to cut this number at two decimal places
+    // Google it
+    ctrl.caloriePercent = ctrl.totals.calories/ calorieAllowance;
+
+    barone.animate(ctrl.caloriePercent);  // Number from 0.0 to 1.0
+    bartwo.animate(0.8);  // Number from 0.0 to 1.0
+    barthree.animate(0.8);  // Number from 0.0 to 1.0
+    barfour.animate(0.8);  // Number from 0.0 to 1.0
   }
+
+}
+
+
 
   // progressbar.js@1.0.0 version is used
 // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/

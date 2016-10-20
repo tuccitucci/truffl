@@ -13,11 +13,26 @@
 .home table {
   background-color: rgba(83, 72, 79, 0.9); }
 
-.home #container {
-  margin: 20px;
-  width: 200px;
-  height: 200px;
-  position: relative; }
+.home .circle-container {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  margin: 0 1em; }
+
+.home #circle-1,
+.home #circle-2,
+.home #circle-3,
+.home #circle-4 {
+  width: 75px;
+  height: 75px; }
+
+.home .content {
+  position: absolute;
+  transform: translate3d(0, -50%, 0);
+  margin-top: -50%;
+  text-align: center;
+  width: 75px; }
 
 body {
   background-image: url("/photocase0tmfuqa43.jpg");

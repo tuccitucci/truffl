@@ -6,8 +6,7 @@ function appConfig($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $stateProvider.state('home', {
             url: '/',
-            templateUrl: 'views/home/home.html',
-
+            templateUrl: 'views/home/home.html'
         })
         .state('about', {
             url: '/about',
@@ -15,13 +14,11 @@ function appConfig($stateProvider, $urlRouterProvider, $httpProvider) {
         })
         .state('tryitout', {
             url: '/tryitout',
-            templateUrl: 'views/tryitout/tryitout.html',
-
+            templateUrl: 'views/tryitout/tryitout.html'
         })
         .state('signup', {
             url: '/signup',
-            templateUrl: 'views/signup/signup.html',
-
+            templateUrl: 'views/signup/signup.html'
         });
 
     $urlRouterProvider.otherwise('/');
