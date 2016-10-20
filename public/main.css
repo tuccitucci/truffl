@@ -10,40 +10,47 @@
   border-radius: 2px;
   margin: 0; }
 
-.home table {
+.tryitout table {
   background-color: rgba(83, 72, 79, 0.9); }
 
-.home .circle-container {
+.tryitout .circle-container {
   position: relative;
   display: inline-block;
   width: 75px;
   height: 75px;
   margin: 0 1em; }
 
-.home #circle-1,
-.home #circle-2,
-.home #circle-3,
-.home #circle-4 {
+.tryitout #circle-1,
+.tryitout #circle-2,
+.tryitout #circle-3,
+.tryitout #circle-4 {
   width: 75px;
   height: 75px; }
 
-.home .content {
+.tryitout .content {
   position: absolute;
   transform: translate3d(0, -50%, 0);
   margin-top: -50%;
   text-align: center;
   width: 75px; }
 
+html {
+  position: relative;
+  min-height: 100%; }
+
 body {
-  background-image: url("/photocase0tmfuqa43.jpg");
-  padding: 60px;
+  background: url("/photocase0tmfuqa43.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  padding: 10px 0px;
   text-align: center;
   color: white;
-  font-family: 'Oswald', sans-serif; }
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 0px 0px 0px 0px; }
 
 h2 {
   text-align: center;
@@ -113,3 +120,24 @@ li.ng-scope {
     color: #555 !important; }
   .collapsing ul li a:hover, .in ul li a:hover {
     color: #f1f1f1 !important; } }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 120px; }
+
+body > .container {
+  padding: 45px 15px 0; }
+
+.container .text-muted {
+  margin: 20px 0;
+  color: white; }
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px; }
+
+code {
+  font-size: 80%; }

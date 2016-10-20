@@ -1,0 +1,36 @@
+.tryitout {
+
+  table {
+    background-color: rgba(83, 72, 79, .9);
+  }
+
+  $circle-width: 75px;
+  $circle-height: 75px;
+
+  .circle-container {
+    position: relative;
+    display: inline-block;
+    width: $circle-width;
+    height: $circle-height;
+    margin: 0 1em;
+  }
+
+  // Dynamic circle CSS
+  #circle-1,
+  #circle-2,
+  #circle-3,
+  #circle-4 {
+    width: $circle-width;
+    height: $circle-height;
+  }
+
+
+  .content {
+    position: absolute;
+    transform: translate3d(0, -50%, 0);
+    margin-top: -50%;
+    text-align: center;
+    width: $circle-width;
+  }
+
+}

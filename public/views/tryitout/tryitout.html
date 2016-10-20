@@ -1,0 +1,77 @@
+<!-- searchCtrl is in charge of md autocomplete search bar -->
+<div class="tryitout" ng-controller="TryItOutCtrl as ctrl">
+  <h2>MAKING THE WORLD A BIT HEALTHIER...ONE SUGGESTION AT A TIME!</h2>
+
+
+<!-- Container for dynamic circle graphics -->
+  <div class="circle-container">
+    <div id="circleone"></div>
+    <div class="content">
+      Calories<br />
+    {{ ctrl.totals.calories }}
+    </div>
+  </div>
+  <div class="circle-container">
+    <div id="circletwo"></div>
+    <div class="content">
+      Vitamin C<br />
+    {{ ctrl.totals.vc }}%
+    </div>
+  </div>
+  <div class="circle-container">
+    <div id="circlethree"></div>
+    <div class="content">
+      Calcium<br />
+    {{ ctrl.totals.calcium }}%
+    </div>
+  </div>
+  <div class="circle-container">
+    <div id="circlefour"></div>
+    <div class="content">
+      Iron <br />
+     {{ ctrl.totals.iron }}%
+    </div>
+  </div>
+
+
+<!-- Table keeps running tally of column values -->
+  <!-- <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>Calories</td>
+        <td>Vitamin C</td>
+      </tr>
+      <tr>
+        <td>{{ ctrl.totals.calories }}</td>
+        <td>{{ ctrl.totals.vc }} % DV</td>
+      </tr>
+    </tbody>
+  </table> -->
+
+
+<!-- File that contains and displays md autocomplete search bar -->
+  <div ng-include="'components/search/search.html'"></div>
+
+
+<!-- Table populates results from clicked foods from search bar -->
+  <table class="table table-bordered" ng-show="ctrl.dailyFoods.length">
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>Calories</td>
+        <td>Vitamin C</td>
+        <td>Calcium</td>
+        <td>Iron</td>
+        <td>Remove?</td>
+      </tr>
+      <tr ng-repeat="food in ctrl.dailyFoods">
+        <td>{{food.item_name}}</td>
+        <td>{{food.nf_calories}}</td>
+        <td>{{food.nf_vitamin_c_dv}}% DV</td>
+        <td>{{food.nf_calcium_dv}}% DV</td>
+        <td>{{food.nf_iron_dv}}% DV</td>
+        <td><button class="remove" ng-click="ctrl.removeFood(food,$index)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
