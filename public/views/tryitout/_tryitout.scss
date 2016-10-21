@@ -44,6 +44,9 @@
     }
   }
 
+  .complete svg path:last-child {
+    stroke: red;
+  }
 
 
 }

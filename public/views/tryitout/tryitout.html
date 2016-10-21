@@ -6,28 +6,28 @@
 <!-- Container for dynamic circle graphics -->
   <div class="graphs">
     <div class="circle-container">
-      <div id="circleone"></div>
+      <div id="circleone" ng-class="{'complete': ctrl.caloriePercent >= 1 }"></div>
       <div class="content">
         Calories<br />
       {{ ctrl.totals.calories }}
       </div>
     </div>
     <div class="circle-container">
-      <div id="circletwo"></div>
+      <div id="circletwo" ng-class="{'complete': ctrl.vcPercent >= 1 }"></div>
       <div class="content">
         Vitamin C<br />
       {{ ctrl.totals.vc }}%
       </div>
     </div>
     <div class="circle-container">
-      <div id="circlethree"></div>
+      <div id="circlethree" ng-class="{'complete': ctrl.calciumPercent >= 1 }"></div>
       <div class="content">
         Calcium<br />
       {{ ctrl.totals.calcium }}%
       </div>
     </div>
     <div class="circle-container">
-      <div id="circlefour"></div>
+      <div id="circlefour" ng-class="{'complete': ctrl.ironPercent >= 1 }"></div>
       <div class="content">
         Iron <br />
        {{ ctrl.totals.iron }}%

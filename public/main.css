@@ -110,6 +110,9 @@
     .tryitout table td {
       font-size: 100%; } }
 
+.tryitout .complete svg path:last-child {
+  stroke: red; }
+
 .signup label {
   color: white; }
 
