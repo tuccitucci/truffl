@@ -1,0 +1,18 @@
+input,
+button,
+select,
+textarea
+{
+    color: #999;
+}
+
+@media (max-width: 767px) {
+    h2
+    {
+        font-size: 18px;
+    }
+    h3
+    {
+        font-size: 18px;
+    }
+}

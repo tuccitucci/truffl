@@ -24,6 +24,9 @@
     height: $circle-height;
   }
 
+  .graphs {
+    margin: 20px 0;
+  }
 
   .content {
     position: absolute;
@@ -32,5 +35,15 @@
     text-align: center;
     width: $circle-width;
   }
+
+  table td {
+    font-size: 76%;
+
+    @media(min-width: 376px) {
+      font-size: 100%;
+    }
+  }
+
+
 
 }

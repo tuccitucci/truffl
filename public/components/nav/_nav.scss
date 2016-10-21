@@ -1,0 +1,104 @@
+.navbar {
+  padding: 0 20px;
+  border-bottom-color: rgba(255,255,255,.5);
+  background-color: rgba(0,0,0,.66);
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #a74b32;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #a0c380;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.active > a {
+    background-color: blue;
+}
+
+.navbar navbar-default navbar-fixed-top ng-scope {
+    padding: 10px;
+}
+
+@media (max-width: 910px) {
+    .navbar-header
+    {
+        float: none;
+    }
+    .navbar-left,
+    .navbar-right
+    {
+        float: none !important;
+    }
+    .navbar-toggle
+    {
+        display: block;
+    }
+    .navbar-collapse
+    {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+    }
+    .navbar-fixed-top
+    {
+        top: 0;
+
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse
+    {
+        display: none!important;
+    }
+    .navbar-nav
+    {
+        float: none!important;
+
+        margin-top: 7.5px;
+    }
+    .navbar-nav > li
+    {
+        float: none;
+    }
+    .navbar-nav > li > a
+    {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in
+    {
+        display: block !important;
+    }
+}
+// END: forces navbar to collapse at 910px
+
+#navbar-main {
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 766px) {
+  .collapsing,
+  .in {
+    background-color: #f7f7f7;
+  }
+  .collapsing ul li a,
+  .in ul li a {
+    color: #555!important;
+  }
+  .collapsing ul li a:hover,
+  .in ul li a:hover
+  {
+    color: #f1f1f1!important;
+  }
+}
