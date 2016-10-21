@@ -1,3 +1,22 @@
+h2 {
+  text-align: center;
+  color: white; }
+
+p {
+  text-align: center; }
+
+input,
+button,
+select,
+textarea {
+  color: #999; }
+
+@media (max-width: 767px) {
+  h2 {
+    font-size: 18px; }
+  h3 {
+    font-size: 18px; } }
+
 .search md-content {
   background: transparent; }
 
@@ -105,10 +124,10 @@
   width: 75px; }
 
 .tryitout table td {
-  font-size: 76%; }
-  @media (min-width: 376px) {
+  font-size: 0.5em; }
+  @media (min-width: 600px) {
     .tryitout table td {
-      font-size: 100%; } }
+      font-size: 1em; } }
 
 .tryitout .complete svg path:last-child {
   stroke: red; }
@@ -133,25 +152,6 @@
 
 .signup .row > div:last-child {
   padding-left: 5px; }
-
-h2 {
-  text-align: center;
-  color: white; }
-
-p {
-  text-align: center; }
-
-input,
-button,
-select,
-textarea {
-  color: #999; }
-
-@media (max-width: 767px) {
-  h2 {
-    font-size: 18px; }
-  h3 {
-    font-size: 18px; } }
 
 html {
   position: relative;
@@ -187,7 +187,7 @@ li {
   position: fixed;
   bottom: 0;
   width: 100%; }
-  @media (min-width: 376px) {
+  @media (min-width: 600px) {
     .footer {
       display: block; } }
   .footer > .container {

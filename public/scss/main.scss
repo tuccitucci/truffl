@@ -1,9 +1,10 @@
+@import 'typography';
+@import 'forms';
+@import 'variables';
 @import '../components/search/search';
 @import '../components/nav/nav';
 @import '../views/tryitout/tryitout';
 @import '../views/signup/signup';
-@import 'typography';
-@import 'forms';
 
 html {
     position: relative;
@@ -47,7 +48,7 @@ li {
   bottom: 0;
   width: 100%;
 
-  @media(min-width: 376px) {
+  @media(min-width: $small) {
     display: block;
   }
 

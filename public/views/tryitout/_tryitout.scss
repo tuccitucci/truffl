@@ -37,10 +37,10 @@
   }
 
   table td {
-    font-size: 76%;
+    font-size: 0.5em;
 
-    @media(min-width: 376px) {
-      font-size: 100%;
+    @media(min-width: $small) {
+      font-size: 1em;
     }
   }
 
