@@ -26,12 +26,12 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
     fields:"brand_name,item_name,nf_calories,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv",
 
     // Jeff
-    appId:"4a5a17f6",
-    appKey:"f25f0fcce93631c8ea309a564a8ede7a",
+    // appId:"4a5a17f6",
+    // appKey:"f25f0fcce93631c8ea309a564a8ede7a",
 
     // Shannon
-    // appId:"66fa1085",
-    // appKey:"451cd69d6214daa71660d85ab7abaab3",
+    appId:"66fa1085",
+    appKey:"451cd69d6214daa71660d85ab7abaab3",
 
     filters:{
       "item_type":2
