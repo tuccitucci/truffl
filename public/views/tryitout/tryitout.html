@@ -16,7 +16,7 @@
       <div id="circletwo" ng-class="{'complete': ctrl.proteinPercent >= 1 }"></div>
       <div class="content">
         Protein<br />
-      {{ ctrl.totals.protein }}%
+      {{ ctrl.totals.protein }}g
       </div>
     </div>
     <div class="circle-container">
@@ -60,7 +60,7 @@
       <tr ng-repeat="food in ctrl.dailyFoods">
         <td>{{food.item_name}}</td>
         <td>{{food.nf_calories}}</td>
-        <td>{{food.nf_protein}}</td>
+        <td>{{food.nf_protein}}g</td>
         <td>{{food.nf_vitamin_c_dv}}% DV</td>
         <td>{{food.nf_calcium_dv}}% DV</td>
         <td>{{food.nf_iron_dv}}% DV</td>

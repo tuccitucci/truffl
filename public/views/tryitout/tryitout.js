@@ -14,7 +14,7 @@ function tryItOutCtrl($scope, $http, DailyList) {
   ctrl.ironPercent = 0;
 
   var calorieAllowance = 2000;
-  var proteinAllowance = 100;
+  var proteinAllowance = 50;
   var vcAllowance = 100;
   var calciumAllowance = 100;
   var ironAllowance = 100;
