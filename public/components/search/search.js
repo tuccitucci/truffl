@@ -10,6 +10,7 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
   // search.addFood   = addFood;
   search.selectedItems = [];
   search.totalCal = 0;
+  search.totalProtein = 0;
   search.vitC = 0;
   search.totalCalcium = 0;
   search.totalIron = 0;
@@ -23,7 +24,7 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
 
   var params = {
     results:"0:02",
-    fields:"brand_name,item_name,nf_calories,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv",
+    fields:"brand_name,item_name,nf_calories,nf_protein,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv",
 
     // Jeff
     // appId:"4a5a17f6",

@@ -13,21 +13,28 @@
       </div>
     </div>
     <div class="circle-container">
-      <div id="circletwo" ng-class="{'complete': ctrl.vcPercent >= 1 }"></div>
+      <div id="circletwo" ng-class="{'complete': ctrl.proteinPercent >= 1 }"></div>
+      <div class="content">
+        Protein<br />
+      {{ ctrl.totals.protein }}%
+      </div>
+    </div>
+    <div class="circle-container">
+      <div id="circlethree" ng-class="{'complete': ctrl.vcPercent >= 1 }"></div>
       <div class="content">
         Vitamin C<br />
       {{ ctrl.totals.vc }}%
       </div>
     </div>
     <div class="circle-container">
-      <div id="circlethree" ng-class="{'complete': ctrl.calciumPercent >= 1 }"></div>
+      <div id="circlefour" ng-class="{'complete': ctrl.calciumPercent >= 1 }"></div>
       <div class="content">
         Calcium<br />
       {{ ctrl.totals.calcium }}%
       </div>
     </div>
     <div class="circle-container">
-      <div id="circlefour" ng-class="{'complete': ctrl.ironPercent >= 1 }"></div>
+      <div id="circlefive" ng-class="{'complete': ctrl.ironPercent >= 1 }"></div>
       <div class="content">
         Iron <br />
        {{ ctrl.totals.iron }}%
@@ -44,6 +51,7 @@
       <tr>
         <td>Name</td>
         <td>Calories</td>
+        <td>Protein</td>
         <td>Vitamin C</td>
         <td>Calcium</td>
         <td>Iron</td>
@@ -52,6 +60,7 @@
       <tr ng-repeat="food in ctrl.dailyFoods">
         <td>{{food.item_name}}</td>
         <td>{{food.nf_calories}}</td>
+        <td>{{food.nf_protein}}</td>
         <td>{{food.nf_vitamin_c_dv}}% DV</td>
         <td>{{food.nf_calcium_dv}}% DV</td>
         <td>{{food.nf_iron_dv}}% DV</td>

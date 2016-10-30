@@ -7,6 +7,7 @@ function DailyListCtrl() {
     service.data = [];
     service.totals = {
       calories: 0,
+      protein: 0,
       vc: 0,
       calcium: 0,
       iron: 0
@@ -22,6 +23,7 @@ function DailyListCtrl() {
 
     function totalOutCalories(item) {
       service.totals.calories += Math.round(item.nf_calories);
+      service.totals.protein += Math.round(item.nf_protein);
       service.totals.vc += Math.round(item.nf_vitamin_c_dv);
       service.totals.calcium += Math.round(item.nf_calcium_dv);
       service.totals.iron += Math.round(item.nf_iron_dv);
@@ -30,6 +32,7 @@ function DailyListCtrl() {
 
     function remove(item, index) {
       service.totals.calories -= Math.round(item.nf_calories);
+      service.totals.protein -= Math.round(item.nf_protein);
       service.totals.vc -= Math.round(item.nf_vitamin_c_dv);
       service.totals.calcium -= Math.round(item.nf_calcium_dv);
       service.totals.iron -= Math.round(item.nf_iron_dv);
