@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="Truffl">
 
   <head>
     <title>TRUFFL.IO</title>
+    <base href="/" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
     <!-- LIBS -->
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js'></script>
@@ -14,6 +15,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="lib/progressbar.js/dist/progressbar.js"></script>
+    <script src="lib/lodash/lodash.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
@@ -28,6 +30,8 @@
     <script src="core/DailyList.js"></script>
     <!-- <script src="views/home/home.js"></script> -->
     <script src="views/tryitout/tryitout.js"></script>
+    <script src="views/dashboard/dashboard.js"></script>
+    <script src="views/auth/auth.js"></script>
     <!-- <script src="views/signup/signup.js"></script> -->
     <!-- <script src="views/about/about.js"></script> -->
     <script src="components/nav/nav.js"></script>
@@ -36,7 +40,7 @@
 
   <body>
     <div ng-include="'components/nav/nav.html'"></div>
-    <div class="container">
+    <div class="viewcontainer">
       <div ui-view></div>
     </div>
     <footer class="footer">

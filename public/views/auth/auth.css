@@ -1,0 +1,33 @@
+body {
+    margin-top: 40px;
+}
+
+#tabs h1 {
+    margin: 0;
+}
+
+#tabs {
+    width: 480px;
+    margin: 40px auto;
+}
+
+#tabs .tab-content {
+    padding: 40px;
+    border: 1px solid #dddddd;
+    border-top: none;
+}
+
+.background {
+  font-family: 'Oswald', sans-serif;
+  // height: 100%;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+  background: url('/photocase0tmfuqa43.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}

@@ -1,4 +1,4 @@
-angular.module('myApp')
+angular.module('Truffl')
   .controller("TryItOutCtrl", tryItOutCtrl);
 
 function tryItOutCtrl($scope, $http, DailyList) {

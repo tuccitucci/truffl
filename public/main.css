@@ -33,6 +33,8 @@ textarea {
   padding: 0 20px;
   border-bottom-color: rgba(255, 255, 255, 0.5);
   background-color: rgba(0, 0, 0, 0.66); }
+  .navbar a {
+    text-transform: uppercase; }
 
 .navbar-default .navbar-brand {
   color: white; }
@@ -132,32 +134,107 @@ textarea {
 .tryitout .complete svg path:last-child {
   stroke: red; }
 
-.signup label {
-  color: white; }
+.dashboard table {
+  background-color: rgba(83, 72, 79, 0.9); }
 
-.signup form {
-  color: white; }
+.dashboard .circle-container {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  margin: 0 1em; }
 
-.signup legend {
-  color: white; }
+.dashboard #circle-1,
+.dashboard #circle-2,
+.dashboard #circle-3,
+.dashboard #circle-4 {
+  width: 75px;
+  height: 75px; }
 
-.signup .row, .signup form > .form-control {
-  margin: 5px 0; }
+.dashboard .graphs {
+  margin: 20px 0; }
 
-.signup .col-no-pad {
-  padding: 0; }
+.dashboard .content {
+  position: absolute;
+  transform: translate3d(0, -50%, 0);
+  margin-top: -50%;
+  text-align: center;
+  width: 75px; }
 
-.signup .row > div:first-child {
-  padding-right: 5px; }
+.dashboard table td {
+  font-size: 0.5em; }
+  @media (min-width: 600px) {
+    .dashboard table td {
+      font-size: 1em; } }
 
-.signup .row > div:last-child {
-  padding-left: 5px; }
+.dashboard .complete svg path:last-child {
+  stroke: red; }
+
+.dashboard #wrapper {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  display: inline-block; }
+
+.dashboard #main-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  padding: 50px 0 0px 0; }
+
+.dashboard #main {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 15px; }
+
+.dashboard #sidebar-wrapper {
+  height: 100%;
+  padding: 50px 0 0px 0;
+  position: fixed;
+  border-right: 1px solid gray; }
+
+.dashboard #sidebar {
+  position: relative;
+  height: 100%;
+  overflow-y: auto; }
+
+.dashboard #sidebar .list-group-item {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0; }
+
+@media (max-width: 992px) {
+  .dashboard body {
+    padding-top: 0px; } }
+
+@media (min-width: 992px) {
+  .dashboard #main-wrapper {
+    float: right; } }
+
+@media (max-width: 992px) {
+  .dashboard #main-wrapper {
+    padding-top: 0px; } }
+
+@media (max-width: 992px) {
+  .dashboard #sidebar-wrapper {
+    position: static;
+    height: auto;
+    max-height: 300px;
+    border-right: 0; } }
 
 html {
   position: relative;
   min-height: 100%; }
 
-body {
+body.home,
+body.about,
+body.login,
+body.register,
+body.tryitout {
   font-family: 'Oswald', sans-serif;
   margin: 0;
   padding: 10px 0;
@@ -169,10 +246,29 @@ body {
   -o-background-size: cover;
   background-size: cover;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
-  body > .container {
-    padding: 85px 15px 0 15px;
-    height: 100%;
-    overflow: auto; }
+
+body > .container {
+  padding: 85px 15px 0 15px;
+  height: 100%;
+  overflow: auto; }
+
+.viewcontainer {
+  padding: 45px 15px 0 15px;
+  height: 100%;
+  overflow: auto; }
+
+body.dashboard {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+  background: url("/backgrounddash1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
 mark {
   background-color: #97abb1; }

@@ -4,32 +4,74 @@
 @import '../components/search/search';
 @import '../components/nav/nav';
 @import '../views/tryitout/tryitout';
-@import '../views/signup/signup';
+@import '../views/dashboard/dashboard';
 
 html {
     position: relative;
     min-height: 100%;
 }
 
+body.home,
+body.about,
+body.login,
+body.register,
+body.tryitout {
+  font-family: 'Oswald', sans-serif;
+  // height: 100%;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+  background: url('/photocase0tmfuqa43.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
 body {
-    font-family: 'Oswald', sans-serif;
+    // font-family: 'Oswald', sans-serif;
     // height: 100%;
-    margin: 0;
-    padding: 10px 0;
-    text-align: center;
-    color: white;
-    background: url('/photocase0tmfuqa43.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
-            background-size: cover;
-    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    // margin: 0;
+    // padding: 10px 0;
+    // text-align: center;
+    // color: white;
+    // background: url('/photocase0tmfuqa43.jpg') no-repeat center center fixed;
+    // -webkit-background-size: cover;
+    //    -moz-background-size: cover;
+    //      -o-background-size: cover;
+    //         background-size: cover;
+    // text-shadow: 0 1px 3px rgba(0,0,0,.5);
 
     > .container {
       padding: 85px 15px 0 15px;
       height: 100%;
       overflow: auto;
     }
+}
+
+.viewcontainer {
+  padding: 45px 15px 0 15px;
+  height: 100%;
+  overflow: auto;
+}
+
+
+
+body.dashboard {
+  font-family: 'Oswald', sans-serif;
+  // height: 100%;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+  background: url('/backgrounddash1.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
 mark {

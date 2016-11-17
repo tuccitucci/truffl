@@ -1,0 +1,124 @@
+<div id="wrapper">
+  <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <ul class="nav list-group">
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 1</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 2</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 3</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 4</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 5</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="main-wrapper" class="col-md-10 pull-right">
+
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- searchCtrl is in charge of md autocomplete search bar -->
+<div class="tryitout well"
+     ng-controller="DashboardCtrl as ctrl">
+
+  <h2>MAKING THE WORLD A BIT HEALTHIER...ONE SUGGESTION AT A TIME!&trade;</h2>
+
+
+<!-- Container for dynamic circle graphics -->
+  <div class="graphs">
+    <div class="circle-container">
+      <div id="circleone" ng-class="{'complete': ctrl.caloriePercent >= 1 }"></div>
+      <div class="content">
+        Calories<br />
+      {{ ctrl.totals.calories }}
+      </div>
+    </div>
+    <div class="circle-container">
+      <div id="circletwo" ng-class="{'complete': ctrl.proteinPercent >= 1 }"></div>
+      <div class="content">
+        Protein<br />
+      {{ ctrl.totals.protein }}g
+      </div>
+    </div>
+    <div class="circle-container">
+      <div id="circlethree" ng-class="{'complete': ctrl.vcPercent >= 1 }"></div>
+      <div class="content">
+        Vitamin C<br />
+      {{ ctrl.totals.vc }}%
+      </div>
+    </div>
+    <div class="circle-container">
+      <div id="circlefour" ng-class="{'complete': ctrl.calciumPercent >= 1 }"></div>
+      <div class="content">
+        Calcium<br />
+      {{ ctrl.totals.calcium }}%
+      </div>
+    </div>
+    <div class="circle-container">
+      <div id="circlefive" ng-class="{'complete': ctrl.ironPercent >= 1 }"></div>
+      <div class="content">
+        Iron <br />
+       {{ ctrl.totals.iron }}%
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- File that contains and displays md autocomplete search bar -->
+  <div ng-include="'components/search/search.html'"></div>
+
+<!-- Displays date on the screen -->
+  <h2 id="datetime"></h2>
+  <script>
+    d = new Date();
+    document.getElementById("datetime").innerHTML = d.toDateString();
+  </script>
+
+<!-- Table populates results from clicked foods from search bar -->
+  <table class="table table-bordered" ng-if="ctrl.dailyFoods.length">
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>Calories</td>
+        <td>Protein</td>
+        <td>Vitamin C</td>
+        <td>Calcium</td>
+        <td>Iron</td>
+        <td>Remove?</td>
+      </tr>
+      <tr ng-repeat="food in ctrl.dailyFoods">
+        <td>{{food.food}}</td>
+        <td>{{food.calories}}</td>
+        <td>{{food.protein}}g</td>
+        <td>{{food.vitc}}% DV</td>
+        <td>{{food.calcium}}% DV</td>
+        <td>{{food.iron}}% DV</td>
+        <td><button class="remove" ng-click="ctrl.removeFood(food,$index)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
