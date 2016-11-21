@@ -1,16 +1,33 @@
 {
   "name": "truffl",
-  "version": "0.1.0",
-  "description": "Track your health, eat your truffles.",
+  "version": "2.0.1",
+  "description": "Authenticate like a boss!",
   "main": "server.js",
   "scripts": {
-    "prestart": "npm update",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "build-css": "node-sass --include-path scss public/scss/main.scss   public/main.css",
+    "scss": "nodemon -e scss -x \"npm run build-css\""
   },
+  "author": "jiminikiz",
+  "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "client-sessions": "^0.7.0",
+    "colors": "^1.1.2",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "gulp-html-replace": "^1.5.4",
+    "lodash": "^4.17.2",
+    "mongoose": "^4.5.6",
+    "morgan": "^1.7.0",
     "nutritionix": "^0.6.1",
-    "ejs": "2.3.3",
-    "express": "4.13.3",
-    "gulp-html-replace": "^1.5.4"
+    "request-promise": "^4.1.1"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.2",
+    "node-sass": "^3.10.1",
+    "nodemon": "^1.11.0"
   }
 }
