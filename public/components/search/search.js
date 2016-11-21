@@ -1,13 +1,16 @@
 angular.module('Truffl')
   .controller('SearchCtrl', searchCtrl);
 
-function searchCtrl($http, $timeout, $q, $log, DailyList) {
+function searchCtrl($scope, $http, $timeout, $q, $log, DailyList) {
   var search = this;
+
+  search.nutrientTotals = [];
 
   search.querySearch   = querySearch;
   search.selectedItemChange = selectedItemChange;
   search.searchTextChange   = searchTextChange;
-  // search.addFood   = addFood;
+  search.addFood = addFood;
+
   search.selectedItems = [];
   search.totalCal = 0;
   search.totalProtein = 0;
@@ -22,28 +25,15 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
   // Internal methods
   // ******************************
 
+  // DOCS: https://ndb.nal.usda.gov/ndb/doc/apilist/API-LIST.md
+
   var params = {
-    results:"0:02",
-    fields: "brand_name," +
-            "item_name," +
-            "nf_calories," +
-            "nf_protein," +
-            "nf_vitamin_c_dv," +
-            "nf_calcium_dv," +
-            "nf_iron_dv",
-
-    // Jeff
-    // appId: "4a5a17f6",
-    // appKey: "f25f0fcce93631c8ea309a564a8ede7a",
-
-    // Shannon
-    appId: "66fa1085",
-    appKey: "451cd69d6214daa71660d85ab7abaab3",
-
-    filters:{
-      "item_type":2
-    }
-  }
+    format: 'json',
+    max: '10',
+    ds: 'Standard Reference',
+    offset: '0',
+    api_key: 'rylOA6sKtXOLBEMUbJmvsSv7LtGfuZkEFcYOi0jd'
+  };
 
   /**
    * Search for states... use $timeout to simulate
@@ -51,23 +41,83 @@ function searchCtrl($http, $timeout, $q, $log, DailyList) {
    * remote dataservice call.
    */
    function querySearch (query) {
-     return $http.get("https://api.nutritionix.com/v1_1/search/"+ query,{params: params})
+     params.q = query;
+
+     return $http.get("http://api.nal.usda.gov/ndb/search/", { params: params })
        .then(function(response) {
-         return response.data.hits;
+         if (_.has(response.data.list, 'item')) {
+           return response.data.list.item;
+         }
+         return [];
        });
    }
 
   function searchTextChange(text) {
-    $log.info('Text changed to ' + text);
+    search.selectedFoodReport = undefined;
+    search.selectedFoodMeasures = undefined;
+    search.selectedMeasure = undefined;
+  }
+
+  function totalNutrients(f) {
+    search.selectedFoodReport = f || search.selectedFoodReport || {};
+    search.selectedFoodReport.totals = {};
+
+    search.selectedFoodReport.nutrients.forEach(function(nutrient,index) {
+      if (!search.selectedFoodReport.totals[nutrient.name]) {
+        search.selectedFoodReport.totals[nutrient.name] = {total:0}
+      }
+      // getting calories
+      if(nutrient.name === "Energy" && nutrient.unit === "kcal"){
+        console.log("Calories are: ", nutrient.measures[0].value);
+      }
+
+      search.selectedFoodReport.totals[nutrient.name].total += nutrient.value;
+      search.selectedFoodReport.totals[nutrient.name].unit = nutrient.unit;
+      search.selectedFoodReport.totals[nutrient.name].measures = nutrient.measures[0].label;
+
+      if (search.selectedMeasure && search.selectedMeasure.customQty) {
+        var singleServingAmount = nutrient.value / search.selectedMeasure.qty;
+        search.selectedFoodReport.totals[nutrient.name].total = Math.ceil(singleServingAmount*search.selectedMeasure.customQty);
+      }
+
+    });
+  }
+
+  $scope.$on('dailylist.update', function() {
+    search.selectedFoodReport = undefined;
+    search.selectedFoodMeasures = undefined;
+    search.selectedMeasure = undefined;
+  })
+
+  $scope.$watch('search.selectedMeasure', function(n, o) {
+    if (n) { totalNutrients(); }
+  }, true);
+
+  function getMeasures(food) {
+    return _(food)
+      .reduce(function(res, item) {
+        if (!_.find(res, {label: item.measures[0].label})) {
+          res.push(item.measures[0]);
+        }
+        return res;
+      }, [])
   }
 
   function selectedItemChange(item) {
-    $log.info('Item changed to ' + JSON.stringify(item));
+    if (item) {
+      params.type = 'f';
+      params.ndbno = item.ndbno;
+      $http.get("http://api.nal.usda.gov/ndb/reports/", { params: params })
+      .then(function(response) {
+        search.selectedFoodMeasures = getMeasures(response.data.report.food.nutrients);
+        totalNutrients(response.data.report.food);
+        return response.data.report.food;
+      });
+    }
   }
 
-  // function addFood() {
-  search.addFood = function() {
-    DailyList.addTo(search.selectedItem.fields);
+  function addFood() {
+    DailyList.add(search.selectedItem);
     search.selectedItem = null;
     updateSuggestion();
   };

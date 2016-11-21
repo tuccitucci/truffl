@@ -3,6 +3,7 @@
 @import 'variables';
 @import '../components/search/search';
 @import '../components/nav/nav';
+@import '../components/weekly-display/weekly-display';
 @import '../views/tryitout/tryitout';
 @import '../views/dashboard/dashboard';
 
@@ -30,34 +31,12 @@ body.tryitout {
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
-body {
-    // font-family: 'Oswald', sans-serif;
-    // height: 100%;
-    // margin: 0;
-    // padding: 10px 0;
-    // text-align: center;
-    // color: white;
-    // background: url('/photocase0tmfuqa43.jpg') no-repeat center center fixed;
-    // -webkit-background-size: cover;
-    //    -moz-background-size: cover;
-    //      -o-background-size: cover;
-    //         background-size: cover;
-    // text-shadow: 0 1px 3px rgba(0,0,0,.5);
-
-    > .container {
-      padding: 85px 15px 0 15px;
-      height: 100%;
-      overflow: auto;
-    }
-}
-
 .viewcontainer {
-  padding: 45px 15px 0 15px;
-  height: 100%;
+  position: relative;
   overflow: auto;
+  padding: 30px;
+  margin: 50px 0 0 200px;
 }
-
-
 
 body.dashboard {
   font-family: 'Oswald', sans-serif;
@@ -66,12 +45,21 @@ body.dashboard {
   padding: 10px 0;
   text-align: center;
   color: white;
-  background: url('/backgrounddash1.jpg') no-repeat center center fixed;
+  background-color: #4E2E34;
+  // background: url('/backgrounddash1.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
      -moz-background-size: cover;
        -o-background-size: cover;
           background-size: cover;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+body.dashboard weekly-display {
+  display: block;
+}
+
+weekly-display {
+  display: none;
 }
 
 mark {

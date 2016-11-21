@@ -3,57 +3,35 @@ angular.module('Truffl')
 
 // DailyListFactory.$inject = ['$http'];
 
-function DailyListFactory($http) {
+function DailyListFactory($http, $rootScope) {
     var service = this;
 
     service.data = [];
-    service.totals = {
-      calories: 0,
-      protein: 0,
-      vc: 0,
-      calcium: 0,
-      iron: 0
-    };
+    service.totals = {}
 
-    service.addTo = addTo;
+    service.add = add;
     service.remove = remove;
     service.get = get;
     service.clear = clear;
 
     function clear() {
-      console.log('clearing')
       service.data = [];
-      service.totals = {
-        calories: 0,
-        protein: 0,
-        vc: 0,
-        calcium: 0,
-        iron: 0
-      };
+      service.totals = {}
     }
 
     function get() {
-
-      console.log("WE ARE GETTING THE LIST OF FOOD!!!");
-
+      console.log('getting')
       service.data = [];
-      service.totals = {
-        calories: 0,
-        protein: 0,
-        vc: 0,
-        calcium: 0,
-        iron: 0
-      };
+      service.totals = {};
 
-      $http.get('/api/journal').then(function(success){
+      return $http.get('/api/journal').then(function(success) {
         console.log("Success getting journal: ", success.data);
-        service.data = success.data;
-        _.each(service.data, totalOutCalories);
+        service.data = success.data.list;
+        service.totals = success.data.totals;
         return service.data;
       }, function(err){
         console.warn("Error getting journal: ", err);
       });
-
     }
 
     function normalize(item, name) {
@@ -68,46 +46,23 @@ function DailyListFactory($http) {
       return item[name] || item[map[name]] || 0;
     }
 
-    function addTo(item) {
-      var dataToPass = {
-        food : item.item_name,
-        calories : item.nf_calories,
-        protein : item.nf_protein,
-        vitc : item.nf_vitamin_c_dv,
-        calcium : item.nf_calcium_dv,
-        iron : item.nf_iron_dv
+    function add(item) {
+      if (item) {
+        return $http.post('/api/journal', {data: item}).then(function(success){
+          console.log("success adding to db: ", success.data);
+          item._id = success.data._id;
+          service.data.push(success.data);
+          $rootScope.$broadcast('dailylist.update');
+        }, function(err){
+          console.log("error adding to db: ", err);
+        });
       }
-
-      $http.post('/api/journal', dataToPass).then(function(success){
-        console.log("success adding to db: ", success);
-        item._id = success.data._id;
-        service.data.push(success.data);
-        totalOutCalories(item);
-      }, function(err){
-         console.log("error adding to db: ", err);
-      });
-    }
-
-    function totalOutCalories(item) {
-      service.totals.calories += Math.round(normalize(item, 'nf_calories'));
-      service.totals.protein += Math.round(normalize(item, 'nf_protein'));
-      service.totals.vc += Math.round(normalize(item, 'nf_vitamin_c_dv'));
-      service.totals.calcium += Math.round(normalize(item, 'nf_calcium_dv'));
-      service.totals.iron += Math.round(normalize(item, 'nf_iron_dv'));
-    }
-
-    function subOutCalories(item) {
-      service.totals.calories -= Math.round(normalize(item, 'nf_calories'));
-      service.totals.protein -= Math.round(normalize(item, 'nf_protein'));
-      service.totals.vc -= Math.round(normalize(item, 'nf_vitamin_c_dv'));
-      service.totals.calcium -= Math.round(normalize(item, 'nf_calcium_dv'));
-      service.totals.iron -= Math.round(normalize(item, 'nf_iron_dv'));
     }
 
     function remove(item, index) {
       $http.post('/api/journal/delete', item).then(function(success) {
-        subOutCalories(item);
         service.data.splice(index,1);
+        $rootScope.$broadcast('dailylist.update');
         console.warn('Successfully removed item', success);
       },function(err) {
         console.warn(err);

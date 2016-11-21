@@ -29,6 +29,21 @@ textarea {
   border-radius: 2px;
   margin: 0; }
 
+.search .food-report-selected {
+  margin: 40px 0; }
+
+.search .food-report-col {
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+  text-align: center;
+  vertical-align: bottom;
+  padding: 2px 0; }
+  .search .food-report-col:nth-child(even) {
+    background: rgba(248, 248, 248, 0.18); }
+  .search .food-report-col:nth-child(odd) {
+    background: rgba(14, 12, 12, 0.2); }
+
 .navbar {
   padding: 0 20px;
   border-bottom-color: rgba(255, 255, 255, 0.5);
@@ -98,6 +113,29 @@ textarea {
   .in ul li a:hover {
     color: #f1f1f1 !important; } }
 
+weekly-display {
+  position: absolute;
+  left: 0;
+  top: 52px;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.51);
+  padding: 10px;
+  width: 200px; }
+  weekly-display ul, weekly-display ol {
+    list-style: none; }
+  weekly-display #accordion1 li.panel {
+    margin-bottom: 0px; }
+  weekly-display a {
+    color: #3e3134; }
+  weekly-display .panel {
+    background-color: #f8f8f8; }
+  weekly-display .panel:hover {
+    text-decoration: none;
+    background-color: rgba(39, 23, 26, 0.2); }
+  weekly-display li.ng-binding {
+    color: black;
+    margin-left: -35px; }
+
 .tryitout table {
   background-color: rgba(83, 72, 79, 0.9); }
 
@@ -137,6 +175,23 @@ textarea {
 .dashboard table {
   background-color: rgba(83, 72, 79, 0.9); }
 
+.dashboard .line-container {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin: 0 1em; }
+
+.dashboard #line-1,
+.dashboard #line-2,
+.dashboard #line-3,
+.dashboard #line-4 {
+  width: 80px;
+  height: 40px; }
+
+.dashboard label.sidebarcontent {
+  font-size: 12px; }
+
 .dashboard .circle-container {
   position: relative;
   display: inline-block;
@@ -161,6 +216,9 @@ textarea {
   text-align: center;
   width: 75px; }
 
+.dashboard .sidebarcontent {
+  font-size: 12px; }
+
 .dashboard table td {
   font-size: 0.5em; }
   @media (min-width: 600px) {
@@ -181,8 +239,7 @@ textarea {
 
 .dashboard #main-wrapper {
   height: 100%;
-  overflow-y: auto;
-  padding: 50px 0 0px 0; }
+  overflow-y: auto; }
 
 .dashboard #main {
   position: relative;
@@ -199,7 +256,9 @@ textarea {
 .dashboard #sidebar {
   position: relative;
   height: 100%;
-  overflow-y: auto; }
+  overflow-y: auto;
+  padding-top: 40px;
+  background-color: rgba(0, 0, 0, 0.66); }
 
 .dashboard #sidebar .list-group-item {
   border-radius: 0;
@@ -211,10 +270,6 @@ textarea {
   .dashboard body {
     padding-top: 0px; } }
 
-@media (min-width: 992px) {
-  .dashboard #main-wrapper {
-    float: right; } }
-
 @media (max-width: 992px) {
   .dashboard #main-wrapper {
     padding-top: 0px; } }
@@ -225,6 +280,12 @@ textarea {
     height: auto;
     max-height: 300px;
     border-right: 0; } }
+
+.dashboard ul, .dashboard ol {
+  list-style: none; }
+
+.dashboard #accordion1 li.panel {
+  margin-bottom: 0px; }
 
 html {
   position: relative;
@@ -247,15 +308,11 @@ body.tryitout {
   background-size: cover;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
-body > .container {
-  padding: 85px 15px 0 15px;
-  height: 100%;
-  overflow: auto; }
-
 .viewcontainer {
-  padding: 45px 15px 0 15px;
-  height: 100%;
-  overflow: auto; }
+  position: relative;
+  overflow: auto;
+  padding: 30px;
+  margin: 50px 0 0 200px; }
 
 body.dashboard {
   font-family: 'Oswald', sans-serif;
@@ -263,12 +320,18 @@ body.dashboard {
   padding: 10px 0;
   text-align: center;
   color: white;
-  background: url("/backgrounddash1.jpg") no-repeat center center fixed;
+  background-color: #4E2E34;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+body.dashboard weekly-display {
+  display: block; }
+
+weekly-display {
+  display: none; }
 
 mark {
   background-color: #97abb1; }

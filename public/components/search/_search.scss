@@ -11,4 +11,19 @@
     border-radius: 2px;
     margin: 0;
   }
+
+  .food-report-selected {
+    margin: 40px 0;
+  }
+
+  .food-report-col {
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    text-align: center;
+    vertical-align: bottom;
+    padding: 2px 0;
+    &:nth-child(even) {background: rgba(248, 248, 248, 0.18)}
+    &:nth-child(odd) {background: rgba(14, 12, 12, 0.2)}
+  }
 }

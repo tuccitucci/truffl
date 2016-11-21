@@ -1,6 +1,7 @@
 <div ng-controller="SearchCtrl as search"
      class="search"
      ng-cloak>
+
   <md-content>
     <form ng-submit="$event.preventDefault()">
       <md-autocomplete
@@ -11,11 +12,11 @@
          md-search-text="search.searchText"
          md-selected-item-change="search.selectedItemChange(item)"
          md-items="item in search.querySearch(search.searchText)"
-         md-item-text="item.fields.item_name"
+         md-item-text="item.name"
          md-min-length="3"
          placeholder="Search for food">
        <md-item-template>
-         <span md-highlight-text="search.searchText" md-highlight-flags="^i">{{item.fields.item_name}}</span>
+         <span md-highlight-text="search.searchText" md-highlight-flags="^i">{{item.name}}</span>
        </md-item-template>
        <md-not-found>
          We found none of that food. Add it to your reciepe book <a href="#">here</a>!
@@ -26,4 +27,17 @@
       </md-input-container>
     </form>
   </md-content>
+
+<form ng-show="search.selectedFoodMeasures">
+  <input ng-model="search.selectedMeasure.customQty" />
+  <select name="servings" ng-options="measure as measure.label for measure in search.selectedFoodMeasures" ng-model="search.selectedMeasure">
+  </select>
+</form>
+
+<div>
+  <span class="food-report-col" ng-repeat="(key, val) in search.selectedFoodReport.totals" ng-if="val.total">
+    {{key}} : {{val.total + val.unit}}
+  </span>
+</div>
+
 </div>

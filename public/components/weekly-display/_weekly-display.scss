@@ -1,0 +1,36 @@
+weekly-display {
+  position: absolute;
+  left: 0;
+  top: 52px;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.51);
+  padding: 10px;
+  width: 200px;
+
+  ul, ol {
+    list-style: none;
+  }
+
+  #accordion1 li.panel{
+      margin-bottom: 0px;
+  }
+
+  a {
+    color: rgb(62, 49, 52);
+  }
+
+  .panel {
+    background-color: #f8f8f8;
+  }
+
+  .panel:hover {
+      text-decoration: none;
+      background-color: rgba(39,23,26,.2);
+  }
+
+  li.ng-binding {
+    color: black;
+    margin-left: -35px;
+  }
+
+}
