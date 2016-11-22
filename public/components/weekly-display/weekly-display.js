@@ -13,7 +13,9 @@
     ctrl.title = "Weekly Display";
 
     ctrl.totals = DailyList.data;
-    
+
+
+
   }
 
   angular.module('Truffl')

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 
     JournalSchema = mongoose.Schema({
-    date : Date,
+    date: Date,
     name: String,
     ndbno: Number,
     nutrients : {
@@ -74,6 +74,7 @@ var mongoose = require('mongoose'),
       'Caffeine': Array,
       'Theobromine': Array,
     },
+
 
     user : {
       type : mongoose.Schema.ObjectId,

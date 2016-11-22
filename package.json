@@ -1,7 +1,7 @@
 {
   "name": "truffl",
   "version": "2.0.1",
-  "description": "Authenticate like a boss!",
+  "description": "Health! One suggestion at a time...",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

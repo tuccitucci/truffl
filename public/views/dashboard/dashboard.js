@@ -66,7 +66,9 @@ function dashboardCtrl($scope, $http, DailyList) {
   updateGraphs();
 
   $scope.$on('dailylist.update', function() {
+    console.log("Hello am i firing?");
     updateGraphs();
+
   }, true);
 
 
@@ -91,8 +93,14 @@ function dashboardCtrl($scope, $http, DailyList) {
 
       ctrl.dailyFoods = DailyList.data;
       ctrl.totals = DailyList.totals;
-
-      if (ctrl.totals.Energy) {
+      console.log("checking: ", ctrl.totals);
+      if (ctrl.dailyFoods.length === 0) {
+        ctrl.caloriePercent = 0;
+        ctrl.proteinPercent = 0;
+        ctrl.vcPercent = 0;
+        ctrl.calciumPercent = 0;
+        ctrl.ironPercent = 0;
+      }  else if (ctrl.totals.Energy) {
         ctrl.caloriePercent = (ctrl.totals.Energy[0]/4.186)/calorieAllowance > 1
         ? 1 : (ctrl.totals.Energy[0]/4.186)/calorieAllowance;
         ctrl.proteinPercent = ctrl.totals.Protein[0]/proteinAllowance > 1
@@ -125,4 +133,6 @@ function dashboardCtrl($scope, $http, DailyList) {
   function round(n) {
     return Math.ceil(n) || 0;
   }
+
+
 }
