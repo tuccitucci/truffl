@@ -40,6 +40,7 @@ body.tryitout {
 
 body.dashboard .viewcontainer {
   margin: 50px 0 0 200px;
+  height: 100%;
 }
 
 body.dashboard {
@@ -49,7 +50,7 @@ body.dashboard {
   padding: 10px 0;
   text-align: center;
   color: white;
-  background-color: #4E2E34;
+  background: url('/backgrounddash.jpg') no-repeat center center fixed;
   // background: url('/backgrounddash1.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
      -moz-background-size: cover;

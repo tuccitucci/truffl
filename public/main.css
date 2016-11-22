@@ -315,7 +315,8 @@ body.tryitout {
   margin: 50px 0 0 0; }
 
 body.dashboard .viewcontainer {
-  margin: 50px 0 0 200px; }
+  margin: 50px 0 0 200px;
+  height: 100%; }
 
 body.dashboard {
   font-family: 'Oswald', sans-serif;
@@ -323,7 +324,7 @@ body.dashboard {
   padding: 10px 0;
   text-align: center;
   color: white;
-  background-color: #4E2E34;
+  background: url("/backgrounddash.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -24,10 +24,10 @@ function dashboardCtrl($scope, $http, DailyList) {
 
 
   var calorieAllowance = 2000;
-  var proteinAllowance = 50;
-  var vcAllowance = 100;
-  var calciumAllowance = 100;
-  var ironAllowance = 100;
+  var proteinAllowance = 75;
+  var vcAllowance = 85;
+  var calciumAllowance = 1000;
+  var ironAllowance = 27;
 
 // ---------------Controls animation of circles---------------
 
