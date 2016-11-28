@@ -1,4 +1,36 @@
 food-list {
   width: 300px;
   padding: 10px;
+  color: #505561;
+
+  i {
+    color: #dd5e5e;
+  }
+
+  .item-title {
+    width: 170px;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+  }
+
+  .item-container {
+    position: relative;
+    &:hover {
+      .remove {
+        display: block;
+      }
+    }
+  }
+
+  .remove {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
 }
