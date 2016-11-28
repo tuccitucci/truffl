@@ -110,6 +110,126 @@ function getFoodById_USDA(ndbno) {
     return request({url: url, qs: params, json: true});
 }
 
+function lowestNutrientPerCat(list) {
+  var calced = _.reduce(list, function(result, item, key) {
+    var obj = {};
+    obj[key] = item[0]/100;
+    result.push(obj);
+    return result;
+  }, [])
+
+  return _.minBy(calced, function(o) {
+    return o[_(o).keys().first()]
+  })
+}
+
+function makeASuggestion(list) {
+  var nutrientAllowances = {
+    'Water': 600,
+    'Energy': 2000,
+    'Protein': 80,
+    'Alcohol, ethyl': 0,
+    'Caffeine': 210,
+    'Carbohydrate': 210,
+    'Fat': 65,
+
+    'Total lipid (fat)': 65,
+    'Fatty acids, total saturated': 20,
+    'Fatty acids, total monounsaturated': 20,
+    'Fatty acids, total polyunsaturated': 20,
+    '20:5 n-3 (EPA)': 200,
+    '22:5 n-3 (DPA)': 200,
+    '22:6 n-3 (DHA)': 200,
+    'Cholesterol': 300,
+
+    'Carbohydrate, by difference': 300,
+    'Fiber, total dietary': 25,
+    'Sugars, total': 20,
+
+    'Calcium, Ca': 1000,
+    'Iron, Fe': 18,
+    'Magnesium, Mg': 400,
+    'Phosphorus, P': 1000,
+    'Potassium, K':3500,
+    'Sodium, Na': 2400,
+    'Zinc, Zn': 15,
+    'Copper, Cu': 2,
+    'Selenium, Se': 70,
+
+    'Vitamin A, IU': 5000,
+    'Thiamin': 1.5,
+    'Riboflavin': 1.7,
+    'Vitamin B-12': 6,
+    'Vitamin B-6': 2,
+    'Niacin': 20,
+    'Folate, total': 400,
+    'Vitamin C, total ascorbic acid': 60,
+    'Vitamin E (alpha-tocopherol)': 30,
+    'Vitamin D': 400,
+  };
+
+  var nutrientSuggestions = {
+    'Water': 'Drink A Glass of Water!',
+    'Energy': 'Eat More!',
+    'Protein': 'Eat a Steak!',
+    'Alcohol, ethyl': 'You might be stressed out, have a glass of wine.',
+    'Caffeine': 'Low on Caff',
+    'Carbohydrate': 'Low on Carbs',
+    'Fat': 'Low on Fat',
+
+    'Total lipid (fat)': 'Low on Fat',
+    'Fatty acids, total saturated': 'Low on this stuff',
+    'Fatty acids, total monounsaturated': 'Low on this stuff',
+    'Fatty acids, total polyunsaturated': 'Low on this stuff',
+    '20:5 n-3 (EPA)': 'Low on this stuff',
+    '22:5 n-3 (DPA)': 'Low on this stuff',
+    '22:6 n-3 (DHA)': 'Low on this stuff',
+    'Cholesterol': 'Low on this stuff',
+
+    'Carbohydrate, by difference': 'Low on this stuff',
+    'Fiber, total dietary': 'Low on this stuff',
+    'Sugars, total': 'Low on this stuff',
+
+    'Calcium, Ca': 'Low on this stuff',
+    'Iron, Fe': 'Low on this stuff',
+    'Magnesium, Mg': 'Low on this stuff',
+    'Phosphorus, P': 'Low on this stuff',
+    'Potassium, K': 'Low on this stuff',
+    'Sodium, Na': 'Low on this stuff',
+    'Zinc, Zn': 'Low on this stuff',
+    'Copper, Cu': 'A deficiency in copper results in poorly formed red blood cells, known as anemia. It also is an antioxidant, helping with the elimination of free radicals. Eat some Beef Liver or Sunflower seeds to improve this mineral.',
+    'Selenium, Se': 'Low on this stuff',
+
+    'Vitamin A, IU': 'Low on this stuff',
+    'Thiamin': 'Try eating some more Pork to raise your B1.' ,
+    'Riboflavin': 'Low on this stuff',
+    'Vitamin B-12': 'Low on this stuff',
+    'Vitamin B-6': 'Low on this stuff',
+    'Niacin': 'Low on this stuff',
+    'Folate, total': 'Low on this stuff',
+    'Vitamin C, total ascorbic acid': 'Low on this stuff',
+    'Vitamin E (alpha-tocopherol)': 'Low on this stuff',
+    'Vitamin D': 'Low on this stuff',
+  };
+
+  var lowestVitamin = lowestNutrientPerCat(list.vitamins);
+  var lowestMineral = lowestNutrientPerCat(list.minerals);
+
+  return {
+    lowVitamin: {
+      name: _.keys(lowestVitamin)[0],
+      value: lowestVitamin[_.keys(lowestVitamin)[0]],
+      suggestion: nutrientSuggestions[_.keys(lowestVitamin)[0]]
+    },
+    lowMineral: {
+      name: _.keys(lowestMineral)[0],
+      value: lowestMineral[_.keys(lowestMineral)[0]],
+      suggestion: nutrientSuggestions[_.keys(lowestMineral)[0]]
+    },
+
+  };
+}
+
 function totalOutJournal(list) {
   var totals = _.reduce(list, function(res, item) {
     _.map(item.nutrients, function(val, key) {
@@ -166,8 +286,10 @@ function get (req,res) {
           res.send(err);
         } else {
           var totals = totalOutJournal(docs);
+          var suggestion = makeASuggestion(totals);
 
           res.send({
+            suggestion: suggestion,
             count: docs.length,
             list: docs,
             totals: totals
