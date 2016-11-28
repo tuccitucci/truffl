@@ -395,5 +395,10 @@ a {
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); }
 
+.dashboard .well,
+.dashboard.well.main-content {
+  color: #505561;
+  background-color: white; }
+
 .md-tooltip {
   margin-top: -10px; }
