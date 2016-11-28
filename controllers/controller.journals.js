@@ -23,8 +23,7 @@ function serializeFood(f, customQty) {
     'Water': [_.find(nutr, {name: 'Water'}).value * customQty, _.find(nutr, {name: 'Water'}).unit],
     'Energy': [_.find(nutr, {name: 'Energy'}).value * customQty, _.find(nutr, {name: 'Energy'}).unit],
     'Protein': [_.find(nutr, {name: 'Protein'}).value * customQty, _.find(nutr, {name: 'Protein'}).unit],
-    'Alcohol, ethyl': [_.find(nutr, {name: 'Alcohol, ethyl'}).value * customQty, _.find(nutr, {name: 'Alcohol, ethyl'}).unit],
-    'Caffeine': [_.find(nutr, {name: 'Caffeine'}).value * customQty, _.find(nutr, {name: 'Caffeine'}).unit],
+    'Caffeine': _.find(nutr, {name: 'Caffeine'}) ? [_.find(nutr, {name: 'Caffeine'}).value * customQty, _.find(nutr, {name: 'Caffeine'}).unit] : [],
     'Carbohydrate': [_.find(nutr, {name: 'Carbohydrate, by difference'}).value * customQty, _.find(nutr, {name: 'Carbohydrate, by difference'}).unit],
     'Fat': [_.find(nutr, {name: 'Total lipid (fat)'}).value * customQty, _.find(nutr, {name: 'Total lipid (fat)'}).unit],
 
@@ -33,16 +32,16 @@ function serializeFood(f, customQty) {
       'Fatty acids, total saturated': [_.find(nutr, {name: 'Fatty acids, total saturated'}).value * customQty, _.find(nutr, {name: 'Fatty acids, total saturated'}).unit],
       'Fatty acids, total monounsaturated': [_.find(nutr, {name: 'Fatty acids, total monounsaturated'}).value * customQty, _.find(nutr, {name: 'Fatty acids, total monounsaturated'}).unit],
       'Fatty acids, total polyunsaturated': [_.find(nutr, {name: 'Fatty acids, total polyunsaturated'}).value * customQty, _.find(nutr, {name: 'Fatty acids, total polyunsaturated'}).unit],
-      '20:5 n-3 (EPA)': [_.find(nutr, {name: '20:5 n-3 (EPA)'}).value * customQty, _.find(nutr, {name: '20:5 n-3 (EPA)'}).unit],
-      '22:5 n-3 (DPA)': [_.find(nutr, {name: '22:5 n-3 (DPA)'}).value * customQty, _.find(nutr, {name: '22:5 n-3 (DPA)'}).unit],
-      '22:6 n-3 (DHA)': [_.find(nutr, {name: '22:6 n-3 (DHA)'}).value * customQty, _.find(nutr, {name: '22:6 n-3 (DHA)'}).unit],
+      '20:5 n-3 (EPA)': _.find(nutr, {name: '20:5 n-3 (EPA)'}) ? [_.find(nutr, {name: '20:5 n-3 (EPA)'}).value * customQty, _.find(nutr, {name: '20:5 n-3 (EPA)'}).unit] : [],
+      '22:5 n-3 (DPA)': _.find(nutr, {name: '22:5 n-3 (DPA)'}) ? [_.find(nutr, {name: '22:5 n-3 (DPA)'}).value * customQty, _.find(nutr, {name: '22:5 n-3 (DPA)'}).unit] : [],
+      '22:6 n-3 (DHA)': _.find(nutr, {name: '22:6 n-3 (DHA)'}) ? [_.find(nutr, {name: '22:6 n-3 (DHA)'}).value * customQty, _.find(nutr, {name: '22:6 n-3 (DHA)'}).unit]: [],
       'Cholesterol': [_.find(nutr, {name: 'Cholesterol'}).value * customQty, _.find(nutr, {name: 'Cholesterol'}).unit],
     },
 
     'carbs': {
       'Carbohydrate, by difference': [_.find(nutr, {name: 'Carbohydrate, by difference'}).value * customQty, _.find(nutr, {name: 'Carbohydrate, by difference'}).unit],
-      'Fiber, total dietary': [_.find(nutr, {name: 'Fiber, total dietary'}).value * customQty, _.find(nutr, {name: 'Fiber, total dietary'}).unit],
-      'Sugars, total': [_.find(nutr, {name: 'Sugars, total'}).value * customQty, _.find(nutr, {name: 'Sugars, total'}).unit],
+      'Fiber, total dietary': _.find(nutr, {name: 'Fiber, total dietary'}) ? [_.find(nutr, {name: 'Fiber, total dietary'}).value * customQty, _.find(nutr, {name: 'Fiber, total dietary'}).unit] : [],
+      'Sugars, total': _.find(nutr, {name: 'Sugars, total'}) ? [_.find(nutr, {name: 'Sugars, total'}).value * customQty, _.find(nutr, {name: 'Sugars, total'}).unit] : [],
     },
 
     'minerals': {
@@ -54,7 +53,7 @@ function serializeFood(f, customQty) {
       'Sodium, Na': [_.find(nutr, {name: 'Sodium, Na'}).value * customQty, _.find(nutr, {name: 'Sodium, Na'}).unit],
       'Zinc, Zn': [_.find(nutr, {name: 'Zinc, Zn'}).value * customQty, _.find(nutr, {name: 'Zinc, Zn'}).unit],
       'Copper, Cu': [_.find(nutr, {name: 'Copper, Cu'}).value * customQty, _.find(nutr, {name: 'Copper, Cu'}).unit],
-      'Selenium, Se': [_.find(nutr, {name: 'Selenium, Se'}).value * customQty, _.find(nutr, {name: 'Selenium, Se'}).unit],
+      'Selenium, Se': _.find(nutr, {name: 'Selenium, Se'}) ? [_.find(nutr, {name: 'Selenium, Se'}).value * customQty, _.find(nutr, {name: 'Selenium, Se'}).unit] : [],
     },
 
     'vitamins': {
@@ -62,12 +61,12 @@ function serializeFood(f, customQty) {
       'Thiamin': [_.find(nutr, {name: 'Thiamin'}).value * customQty, _.find(nutr, {name: 'Thiamin'}).unit],
       'Riboflavin': [_.find(nutr, {name: 'Riboflavin'}).value * customQty, _.find(nutr, {name: 'Riboflavin'}).unit],
       'Vitamin B-12': [_.find(nutr, {name: 'Vitamin B-12'}).value * customQty, _.find(nutr, {name: 'Vitamin B-12'}).unit],
-      'Vitamin B-6': [_.find(nutr, {name: 'Vitamin B-6'}).value * customQty, _.find(nutr, {name: 'Vitamin B-6'}).unit],
+      'Vitamin B-6': _.find(nutr, {name: 'Vitamin B-6'}) ? [_.find(nutr, {name: 'Vitamin B-6'}).value * customQty, _.find(nutr, {name: 'Vitamin B-6'}).unit] : [],
       'Niacin': [_.find(nutr, {name: 'Niacin'}).value * customQty, _.find(nutr, {name: 'Niacin'}).unit],
       'Folate, total': [_.find(nutr, {name: 'Folate, total'}).value * customQty, _.find(nutr, {name: 'Folate, total'}).unit],
       'Vitamin C, total ascorbic acid': [_.find(nutr, {name: 'Vitamin C, total ascorbic acid'}).value * customQty, _.find(nutr, {name: 'Vitamin C, total ascorbic acid'}).unit],
-      'Vitamin E (alpha-tocopherol)': [_.find(nutr, {name: 'Vitamin E (alpha-tocopherol)'}).value * customQty, _.find(nutr, {name: 'Vitamin E (alpha-tocopherol)'}).unit],
-      'Vitamin D': [_.find(nutr, {name: 'Vitamin D'}).value * customQty, _.find(nutr, {name: 'Vitamin D'}).unit]
+      'Vitamin E (alpha-tocopherol)': _.find(nutr, {name: 'Vitamin E (alpha-tocopherol)'}) ? [_.find(nutr, {name: 'Vitamin E (alpha-tocopherol)'}).value * customQty, _.find(nutr, {name: 'Vitamin E (alpha-tocopherol)'}).unit] : [],
+      'Vitamin D': _.find(nutr, {name: 'Vitamin E (alpha-tocopherol)'}) ? [_.find(nutr, {name: 'Vitamin D'}).value * customQty, _.find(nutr, {name: 'Vitamin D'}).unit] : []
     }
   }
 
