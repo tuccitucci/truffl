@@ -1,0 +1,17 @@
+<div>
+  <div ng-include="'components/search/search.html'"></div>
+
+  <table class="table table-bordered" ng-if="ctrl.list.length">
+      <tbody>
+          <tr>
+              <td>Name</td>
+              <td>Remove?</td>
+          </tr>
+          <tr ng-repeat="item in ctrl.list">
+              <td>{{item.name}}</td>
+              <td><button class="remove" ng-click="ctrl.removeFood(item,$index)">X</button></td>
+          </tr>
+      </tbody>
+  </table>
+
+</div>

@@ -1,7 +1,7 @@
 angular.module('Truffl')
   .controller('SearchCtrl', searchCtrl);
 
-function searchCtrl($scope, $http, $timeout, $q, $log, DailyList) {
+function searchCtrl($scope, $http, $timeout, $q, $log, DailyList, $stateParams) {
   var search = this;
 
   search.nutrientTotals = [];
@@ -11,15 +11,16 @@ function searchCtrl($scope, $http, $timeout, $q, $log, DailyList) {
   search.searchTextChange   = searchTextChange;
   search.addFood = addFood;
 
+  search.selectedFoodMeasures = [
+    {
+      label: '100g',
+      customQty: '1'
+    }
+  ];
+
+  search.selectedMeasure = search.selectedFoodMeasures;
+
   search.selectedItems = [];
-  search.totalCal = 0;
-  search.totalProtein = 0;
-  search.vitC = 0;
-  search.totalCalcium = 0;
-  search.totalIron = 0;
-
-  // window.search = search;
-
 
   // ******************************
   // Internal methods
@@ -54,40 +55,34 @@ function searchCtrl($scope, $http, $timeout, $q, $log, DailyList) {
 
   function searchTextChange(text) {
     search.selectedFoodReport = undefined;
-    search.selectedFoodMeasures = undefined;
-    search.selectedMeasure = undefined;
   }
 
   function totalNutrients(f) {
     search.selectedFoodReport = f || search.selectedFoodReport || {};
     search.selectedFoodReport.totals = {};
+    if (search.selectedFoodReport.nutrients) {
 
-    search.selectedFoodReport.nutrients.forEach(function(nutrient,index) {
-      if (!search.selectedFoodReport.totals[nutrient.name]) {
-        search.selectedFoodReport.totals[nutrient.name] = {total:0}
-      }
-      // getting calories
-      if(nutrient.name === "Energy" && nutrient.unit === "kcal"){
-        console.log("Calories are: ", nutrient.measures[0].value);
-      }
+      search.selectedFoodReport.nutrients.forEach(function(nutrient,index) {
+        if (!search.selectedFoodReport.totals[nutrient.name]) {
+          search.selectedFoodReport.totals[nutrient.name] = {total:0}
+        }
 
-      search.selectedFoodReport.totals[nutrient.name].total += nutrient.value;
-      search.selectedFoodReport.totals[nutrient.name].unit = nutrient.unit;
-      search.selectedFoodReport.totals[nutrient.name].measures = nutrient.measures[0].label;
+        search.selectedFoodReport.totals[nutrient.name].total += nutrient.value;
+        search.selectedFoodReport.totals[nutrient.name].unit = nutrient.unit;
+        search.selectedFoodReport.totals[nutrient.name].measures = nutrient.measures[0].label;
 
-      if (search.selectedMeasure && search.selectedMeasure.customQty) {
-        var singleServingAmount = nutrient.value / search.selectedMeasure.qty;
-        search.selectedFoodReport.totals[nutrient.name].total = Math.ceil(singleServingAmount*search.selectedMeasure.customQty);
-      }
+        if (search.selectedMeasure && search.selectedMeasure.customQty) {
+          var singleServingAmount = nutrient.value;
+          search.selectedFoodReport.totals[nutrient.name].total = Math.ceil(singleServingAmount*search.selectedMeasure.customQty);
+        }
 
-    });
+      });
+    }
   }
 
   $scope.$on('dailylist.update', function() {
     search.selectedFoodReport = undefined;
-    search.selectedFoodMeasures = undefined;
-    search.selectedMeasure = undefined;
-  })
+  });
 
   $scope.$watch('search.selectedMeasure', function(n, o) {
     if (n) { totalNutrients(); }
@@ -109,7 +104,7 @@ function searchCtrl($scope, $http, $timeout, $q, $log, DailyList) {
       params.ndbno = item.ndbno;
       $http.get("http://api.nal.usda.gov/ndb/reports/", { params: params })
       .then(function(response) {
-        search.selectedFoodMeasures = getMeasures(response.data.report.food.nutrients);
+        // search.selectedFoodMeasures = getMeasures(response.data.report.food.nutrients);
         totalNutrients(response.data.report.food);
         return response.data.report.food;
       });
@@ -117,7 +112,8 @@ function searchCtrl($scope, $http, $timeout, $q, $log, DailyList) {
   }
 
   function addFood() {
-    DailyList.add(search.selectedItem);
+    var date = moment($stateParams.date).toDate();
+    DailyList.add(search.selectedItem, date, search.selectedMeasure.customQty);
     search.selectedItem = null;
     updateSuggestion();
   };

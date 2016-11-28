@@ -113,28 +113,9 @@ textarea {
   .in ul li a:hover {
     color: #f1f1f1 !important; } }
 
-weekly-display {
-  position: absolute;
-  left: 0;
-  top: 52px;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.51);
-  padding: 10px;
-  width: 200px; }
-  weekly-display ul, weekly-display ol {
-    list-style: none; }
-  weekly-display #accordion1 li.panel {
-    margin-bottom: 0px; }
-  weekly-display a {
-    color: #3e3134; }
-  weekly-display .panel {
-    background-color: #f8f8f8; }
-  weekly-display .panel:hover {
-    text-decoration: none;
-    background-color: rgba(39, 23, 26, 0.2); }
-  weekly-display li.ng-binding {
-    color: black;
-    margin-left: -35px; }
+food-list {
+  width: 300px;
+  padding: 10px; }
 
 .tryitout table {
   background-color: rgba(83, 72, 79, 0.9); }
@@ -287,20 +268,48 @@ weekly-display {
 .dashboard #accordion1 li.panel {
   margin-bottom: 0px; }
 
+.dashboard .complete-graphs {
+  display: block; }
+  .dashboard .complete-graphs .main-category {
+    width: 40%;
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 3px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.31); }
+  .dashboard .complete-graphs .category-title {
+    font-size: 110%;
+    margin-bottom: 20px;
+    text-transform: uppercase; }
+  .dashboard .complete-graphs .table-row {
+    margin: 7px; }
+
+.dashboard .navigation {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between; }
+
 html {
   position: relative;
   min-height: 100%; }
+
+body {
+  font-family: 'Oswald', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: white;
+  background-color: #4E2E34; }
 
 body.home,
 body.about,
 body.login,
 body.register,
 body.tryitout {
-  font-family: 'Oswald', sans-serif;
-  margin: 0;
-  padding: 10px 0;
-  text-align: center;
-  color: white;
   background: url("/photocase0tmfuqa43.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -308,34 +317,18 @@ body.tryitout {
   background-size: cover;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
-.viewcontainer {
-  position: relative;
-  overflow: auto;
-  padding: 30px;
-  margin: 50px 0 0 0; }
+.landing {
+  margin-top: 60px;
+  padding: 30px; }
 
-body.dashboard .viewcontainer {
-  margin: 50px 0 0 200px;
+.ui-view {
+  overflow: scroll;
   height: 100%; }
 
-body.dashboard {
-  font-family: 'Oswald', sans-serif;
-  margin: 0;
-  padding: 10px 0;
-  text-align: center;
-  color: white;
-  background: url("/backgrounddash.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
-
-body.dashboard weekly-display {
-  display: block; }
-
-weekly-display {
-  display: none; }
+.layout-container {
+  margin-top: 50px; }
+  .layout-container .main-content-container {
+    padding: 2rem; }
 
 mark {
   background-color: #97abb1; }
@@ -344,6 +337,11 @@ li {
   list-style: none;
   text-align: center;
   text-decoration: none; }
+
+a {
+  cursor: pointer; }
+  a:hover {
+    text-decoration: none; }
 
 .footer {
   display: none;

@@ -8,8 +8,7 @@ var mongoose = require('mongoose'),
         name     : String,
         email    : { type: String, unique: true },
         password : String,
-        created  : { type: Date, default: Date.now }
-
+        created  : Number // Date.now()
     });
 
 // hash passwords before saving them

@@ -3,15 +3,14 @@ angular.module('Truffl')
 
 // DailyListFactory.$inject = ['$http'];
 
-function DailyListFactory($http, $rootScope) {
+function DailyListFactory($http, $rootScope, FoodJournal) {
     var service = this;
 
     service.data = [];
-    service.totals = {}
 
     service.add = add;
     service.remove = remove;
-    service.get = get;
+    service.getDay = getDay;
     service.clear = clear;
 
     function clear() {
@@ -19,19 +18,20 @@ function DailyListFactory($http, $rootScope) {
       service.totals = {}
     }
 
-    function get() {
-      console.log('getting')
+    function getDay(start, end) {
       service.data = [];
       service.totals = {};
 
-      return $http.get('/api/journal').then(function(success) {
-        console.log("Success getting journal: ", success.data);
-        service.data = success.data.list;
-        service.totals = success.data.totals;
-        return service.data;
-      }, function(err){
-        console.warn("Error getting journal: ", err);
-      });
+      return FoodJournal.get({
+        startDate: moment(start).startOf('day').toDate(),
+        endDate: moment(end).startOf('day').toDate()
+      })
+      .then(function(resp) {
+        service.data = resp.list;
+        service.totals = resp.totals;
+        $rootScope.$broadcast('dailylist.newDay');
+      })
+
     }
 
     function normalize(item, name) {
@@ -46,10 +46,12 @@ function DailyListFactory($http, $rootScope) {
       return item[name] || item[map[name]] || 0;
     }
 
-    function add(item) {
+    function add(item, date, customQty) {
       if (item) {
-        return $http.post('/api/journal', {data: item}).then(function(success){
-          console.log("success adding to db: ", success.data);
+        date = date || moment().toDate();
+        var data = _.extend(item, {date: date}, {customQty: customQty});
+        return $http.post('/api/journal', {data: data}).then(function(success){
+          console.warn("Added Item: ", success.data);
           item._id = success.data._id;
           service.data.push(success.data);
           $rootScope.$broadcast('dailylist.update');

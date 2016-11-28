@@ -150,6 +150,37 @@ ul, ol {
     margin-bottom: 0px;
 }
 
+.complete-graphs {
+  display: block;
+
+  .main-category {
+    width: 40%;
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 3px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.31);
+  }
+
+  .category-title {
+    font-size: 110%;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .table-row {
+    margin: 7px;
+  }
+}
+
+.navigation {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
 
 
 

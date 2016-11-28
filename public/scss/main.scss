@@ -1,16 +1,25 @@
+@import 'variables';
 @import 'typography';
 @import 'forms';
-@import 'variables';
 @import '../components/search/search';
 @import '../components/nav/nav';
-@import '../components/weekly-display/weekly-display';
+@import '../components/food-list/food-list';
 @import '../views/tryitout/tryitout';
 @import '../views/dashboard/dashboard';
 
 html {
     position: relative;
     min-height: 100%;
+}
 
+body {
+  font-family: 'Oswald', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: white;
+  background-color: #4E2E34;
 }
 
 body.home,
@@ -18,12 +27,6 @@ body.about,
 body.login,
 body.register,
 body.tryitout {
-  font-family: 'Oswald', sans-serif;
-  // height: 100%;
-  margin: 0;
-  padding: 10px 0;
-  text-align: center;
-  color: white;
   background: url('/photocase0tmfuqa43.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
      -moz-background-size: cover;
@@ -32,40 +35,21 @@ body.tryitout {
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
-.viewcontainer {
-  position: relative;
-  overflow: auto;
+.landing {
+  margin-top: 60px;
   padding: 30px;
-  margin: 50px 0 0 0;
 }
 
-body.dashboard .viewcontainer {
-  margin: 50px 0 0 200px;
+.ui-view {
+  overflow: scroll;
   height: 100%;
 }
 
-body.dashboard {
-  font-family: 'Oswald', sans-serif;
-  // height: 100%;
-  margin: 0;
-  padding: 10px 0;
-  text-align: center;
-  color: white;
-  background: url('/backgrounddash.jpg') no-repeat center center fixed;
-  // background: url('/backgrounddash1.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-     -moz-background-size: cover;
-       -o-background-size: cover;
-          background-size: cover;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
-
-body.dashboard weekly-display {
-  display: block;
-}
-
-weekly-display {
-  display: none;
+.layout-container {
+  margin-top: $primary-nav-height;
+  .main-content-container {
+    padding: 2rem;
+  }
 }
 
 mark {
@@ -76,6 +60,14 @@ li {
   list-style: none;
   text-align: center;
   text-decoration: none;
+}
+
+a {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .footer {

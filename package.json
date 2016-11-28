@@ -1,7 +1,7 @@
 {
   "name": "truffl",
   "version": "2.0.1",
-  "description": "Health! One suggestion at a time...",
+  "description": "Authenticate like a boss!",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "build-css": "node-sass --include-path scss public/scss/main.scss   public/main.css",
     "scss": "nodemon -e scss -x \"npm run build-css\""
   },
-  "author": "jiminikiz",
+  "author": "bertucci",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.3.0",
@@ -20,6 +20,8 @@
     "express": "^4.14.0",
     "gulp-html-replace": "^1.5.4",
     "lodash": "^4.17.2",
+    "moment": "^2.17.0",
+    "momentjs": "^2.0.0",
     "mongoose": "^4.5.6",
     "morgan": "^1.7.0",
     "nutritionix": "^0.6.1",

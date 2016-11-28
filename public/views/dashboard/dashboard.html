@@ -1,68 +1,35 @@
 <div ng-controller="DashboardCtrl as ctrl">
+  <div class="dashboard well main-content">
+      <div class="navigation">
+        <a ng-click="ctrl.previousDay()"><i class="material-icons">chevron_left</i></a>
+        <a ng-if="!ctrl.isToday" ng-click="ctrl.nextDay()"><i class="material-icons">chevron_right</i></a>
+      </div>
+      <h2>{{ctrl.currentDate | toMoment}}</h2>
+      <!-- Container for dynamic circle graphics -->
+      <div class="graphs">
+          <div class="circle-container" ng-repeat="n in ctrl.nutrientsToGraph">
+              <div id="{{n}}" ng-class="{'complete': ctrl.percents[n] >= 1 }"></div>
+              <div class="content">
+                  {{n | nutrientDisplayName}}<br /> {{ ctrl.round(ctrl.totals[n][0]) + ctrl.totals[n][1]}}
+              </div>
+          </div>
+      </div>
 
-<div class="dashboard well main-content">
-
-    <h2>MAKING THE WORLD A BIT HEALTHIER...ONE SUGGESTION AT A TIME!&trade;</h2>
-    <!-- Container for dynamic circle graphics -->
-    <div class="graphs">
-        <div class="circle-container">
-            <div id="circleone" ng-class="{'complete': ctrl.caloriePercent >= 1 }"></div>
-            <div class="content">
-                Calories<br /> {{ ctrl.round(ctrl.totals.Energy[0]/4.168) }}
+      <div class="complete-graphs">
+        <div class="main-category" ng-repeat="(nutrientName, nutrientDataArray) in ctrl.totals" ng-if="!nutrientDataArray[0] && nutrientDataArray[0] !== 0">
+          <div class="category-title">
+            {{nutrientName | nutrientDisplayName}}
+          </div>
+          <div class="category-table" ng-repeat="(innerNutrientName, innerNutrientDataArray) in nutrientDataArray" ng-if="!nutrientDataArray[0] && nutrientDataArray[0] !== 0">
+            <div class="table-row">
+              {{innerNutrientName | nutrientDisplayName}}
+              <span>{{': ' + ctrl.round(innerNutrientDataArray[0]) + innerNutrientDataArray[1] }} </span>
+              <md-progress-linear md-mode="determinate" value="{{innerNutrientDataArray[0]/100}}"></md-progress-linear>
             </div>
+          </div>
         </div>
-        <div class="circle-container">
-            <div id="circletwo" ng-class="{'complete': ctrl.proteinPercent >= 1 }"></div>
-            <div class="content">
-                Protein<br /> {{ ctrl.round(ctrl.totals.Protein[0]) + ctrl.totals.Protein[1] }}
-            </div>
-        </div>
-        <div class="circle-container">
-            <div id="circlethree" ng-class="{'complete': ctrl.vcPercent >= 1 }"></div>
-            <div class="content">
-                Vitamin C<br /> {{ ctrl.round(ctrl.totals["Vitamin C, total ascorbic acid"][0]) + ctrl.totals["Vitamin C, total ascorbic acid"][1] }}
-            </div>
-        </div>
-        <div class="circle-container">
-            <div id="circlefour" ng-class="{'complete': ctrl.calciumPercent >= 1 }"></div>
-            <div class="content">
-                Calcium<br /> {{ ctrl.round(ctrl.totals["Calcium, Ca"][0]) + ctrl.totals["Calcium, Ca"][1] }}
-            </div>
-        </div>
-        <div class="circle-container">
-            <div id="circlefive" ng-class="{'complete': ctrl.ironPercent >= 1 }"></div>
-            <div class="content">
-                Iron <br /> {{ ctrl.round(ctrl.totals["Iron, Fe"][0]) + ctrl.totals["Iron, Fe"][1] }}
-            </div>
-        </div>
-    </div>
+      </div>
 
 
-
-
-
-
-
-
-    <!-- File that contains and displays md autocomplete search bar -->
-    <div ng-include="'components/search/search.html'"></div>
-
-    <!-- Table populates results from clicked foods from search bar -->
-    <table class="table table-bordered" ng-if="ctrl.dailyFoods.length">
-        <tbody>
-            <tr>
-                <td>Name</td>
-                <!-- <td ng-repeat="name in ctrl.titles">{{name}}</td> -->
-                <td>Remove?</td>
-            </tr>
-            <tr ng-repeat="item in ctrl.dailyFoods">
-                <td>{{item.name}}</td>
-                <!-- <td>  {{ item.date | date: "shortDate" }}</td> -->
-                <!-- <td ng-repeat="(key,value) in item">{{val}}</td> -->
-                <td><button class="remove" ng-click="ctrl.removeFood(item,$index)">X</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
   </div>
+</div>

@@ -28,16 +28,18 @@
     </form>
   </md-content>
 
-<form ng-show="search.selectedFoodMeasures">
-  <input ng-model="search.selectedMeasure.customQty" />
-  <select name="servings" ng-options="measure as measure.label for measure in search.selectedFoodMeasures" ng-model="search.selectedMeasure">
-  </select>
-</form>
+  <form ng-show="search.selectedItem">
+    <input ng-model="search.selectedMeasure.customQty" />
+    <select name="servings"
+            ng-options="measure as measure.label for measure in search.selectedFoodMeasures"
+            ng-model="search.selectedMeasure">
+    </select>
+  </form>
 
-<div>
-  <span class="food-report-col" ng-repeat="(key, val) in search.selectedFoodReport.totals" ng-if="val.total">
-    {{key}} : {{val.total + val.unit}}
-  </span>
-</div>
+  <div>
+    <p ng-repeat="(key, val) in search.selectedFoodReport.totals">
+      {{key}} : {{val.total + val.unit}}
+    </p>
+  </div>
 
 </div>

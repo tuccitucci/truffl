@@ -5,7 +5,7 @@ var config = require('./package'),
     bodyParser = require('body-parser'), // used for POST routes to obtain the POST payload as a property on `req`
     logger = require('morgan')('dev'), // log the routes being accessed by the frontend
     fileserver = express.static('public'), // turn the public folder into a file server
-    mongoose = require('mongoose').connect('mongodb://localhost/'.concat(config.name), ( error ) => {
+    mongoose = require('mongoose').connect(process.env.MONGOLAB_URI || 'mongodb://localhost/'.concat(config.name), ( error ) => {
         if( error ) {
             console.error('ERROR starting mongoose!', error);
             process.exit(128);
@@ -25,7 +25,7 @@ var config = require('./package'),
         }
     }),
     app = express(), // initialize express
-    port = process.env.PORT||80; // server port
+    port = process.env.PORT||8080; // server port
 
 // server setup
 app.use(
