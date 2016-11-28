@@ -45,14 +45,13 @@ textarea {
     background: rgba(14, 12, 12, 0.2); }
 
 .navbar {
-  padding: 0 20px;
+  padding: 0;
   border-bottom-color: rgba(255, 255, 255, 0.5);
   background-color: rgba(0, 0, 0, 0.66); }
   .navbar a {
     text-transform: uppercase; }
-
-.navbar-default .navbar-brand {
-  color: white; }
+  .navbar .navbar-brand {
+    color: white; }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -152,6 +151,9 @@ food-list {
 
 .tryitout .complete svg path:last-child {
   stroke: red; }
+
+.dashboard h2 {
+  color: #505561; }
 
 .dashboard table {
   background-color: rgba(83, 72, 79, 0.9); }
@@ -302,8 +304,8 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #505561;
-  background-color: aliceblue; }
+  color: white;
+  background-color: #4E2E34; }
 
 body.home,
 body.about,
@@ -359,5 +361,5 @@ a {
     color: white; }
 
 .well {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); }
