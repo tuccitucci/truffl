@@ -24,7 +24,7 @@
             <div class="table-row">
               {{innerNutrientName | nutrientDisplayName}}
               <span>{{': ' + ctrl.round(innerNutrientDataArray[0]) + innerNutrientDataArray[1] }} </span>
-              <md-progress-linear md-mode="determinate" value="{{innerNutrientDataArray[0]/100}}"></md-progress-linear>
+              <md-progress-linear md-mode="determinate" value="{{(innerNutrientDataArray[0]/ctrl.nutrientAllowances[innerNutrientName]) *100}}"></md-progress-linear>
             </div>
           </div>
         </div>

@@ -103,4 +103,48 @@ function dashboardCtrl($scope, $http, DailyList, FoodJournal, $stateParams, $sta
   function round(n) {
     return Math.ceil(n) || 0;
   }
+
+  ctrl.nutrientAllowances = {
+    'Water': 600,
+    'Energy': 2000,
+    'Protein': 80,
+    'Alcohol, ethyl': 0,
+    'Caffeine': 210,
+    'Carbohydrate': 210,
+    'Fat': 65,
+
+    'Total lipid (fat)': 65,
+    'Fatty acids, total saturated': 20,
+    'Fatty acids, total monounsaturated': 20,
+    'Fatty acids, total polyunsaturated': 20,
+    '20:5 n-3 (EPA)': 200,
+    '22:5 n-3 (DPA)': 200,
+    '22:6 n-3 (DHA)': 200,
+    'Cholesterol': 300,
+
+    'Carbohydrate, by difference': 300,
+    'Fiber, total dietary': 25,
+    'Sugars, total': 20,
+
+    'Calcium, Ca': 1000,
+    'Iron, Fe': 18,
+    'Magnesium, Mg': 400,
+    'Phosphorus, P': 1000,
+    'Potassium, K':3500,
+    'Sodium, Na': 2400,
+    'Zinc, Zn': 15,
+    'Copper, Cu': 2,
+    'Selenium, Se': 70,
+
+    'Vitamin A, IU': 5000,
+    'Thiamin': 1.5,
+    'Riboflavin': 1.7,
+    'Vitamin B-12': 6,
+    'Vitamin B-6': 2,
+    'Niacin': 20,
+    'Folate, total': 400,
+    'Vitamin C, total ascorbic acid': 60,
+    'Vitamin E (alpha-tocopherol)': 30,
+    'Vitamin D': 400,
+  }
 }

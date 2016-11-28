@@ -15,28 +15,6 @@ function getMeasures(food) {
     }, [])
 }
 
-// function serializeFood(f) {
-//   f.totals = {};
-//   f.measures = getMeasures(f)[0];
-//
-//   f.nutrients.forEach(function(nutrient,index) {
-//     f.totals[nutrient.name] = [0, ''];
-//     // getting calories
-//     if(nutrient.name === "Energy" && nutrient.unit === "kcal") {
-//       console.log("Calories are: ", nutrient.measures[0].value);
-//     }
-//
-//     f.totals[nutrient.name][0] += nutrient.value;
-//     f.totals[nutrient.name][1] = nutrient.unit;
-//
-//     if (f.measures.customQty) {
-//       var singleServingAmount = nutrient.value / f.measures.qty;
-//       f.totals[nutrient.name][0] = Math.ceil(singleServingAmount*f.measures.customQty);
-//     }
-//   });
-//   return f.totals;
-// }
-
 function serializeFood(f, customQty) {
   var nutr = f.nutrients || f;
   customQty = customQty || 1;

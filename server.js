@@ -25,7 +25,7 @@ var config = require('./package'),
         }
     }),
     app = express(), // initialize express
-    port = process.env.PORT||8080; // server port
+    port = process.env.PORT||80; // server port
 
 // server setup
 app.use(
