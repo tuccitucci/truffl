@@ -1,12 +1,17 @@
 .dashboard {
 
+  .well .main-content {
+    color:#505561;
+    background-color: white;
+  }
+
   h2 {
     color: #505561;
   }
 
   .well {
     background-color: white;
-    color: #505561;
+    // color: #505561;
   }
 
   table {

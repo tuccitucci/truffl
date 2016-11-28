@@ -152,12 +152,15 @@ food-list {
 .tryitout .complete svg path:last-child {
   stroke: red; }
 
+.dashboard .well .main-content {
+  color: #505561;
+  background-color: white; }
+
 .dashboard h2 {
   color: #505561; }
 
 .dashboard .well {
-  background-color: white;
-  color: #505561; }
+  background-color: white; }
 
 .dashboard table {
   background-color: rgba(83, 72, 79, 0.9); }
