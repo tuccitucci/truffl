@@ -1,5 +1,5 @@
 <div ng-controller="DashboardCtrl as ctrl">
-  <div class="suggestion">
+  <div class="well suggestion">
     <p ng-repeat="(type, suggestionObj) in ctrl.suggestions" ng-if="suggestionObj.name">
       You seem to be low on {{suggestionObj.name}}, you are at {{ctrl.round(suggestionObj.value*100)}}% of your Daily Value. {{suggestionObj.suggestion}}
     </p>

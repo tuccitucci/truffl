@@ -152,7 +152,11 @@ food-list {
 .tryitout .complete svg path:last-child {
   stroke: red; }
 
-.dashboard .well .main-content {
+.dashboard .well.suggestion {
+  color: #505561;
+  background-color: white; }
+
+.dashboard .well.main-content {
   color: #505561;
   background-color: white; }
 
