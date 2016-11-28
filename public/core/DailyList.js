@@ -30,6 +30,8 @@ function DailyListFactory($http, $rootScope, FoodJournal) {
         service.data = resp.list;
         service.totals = resp.totals;
         $rootScope.$broadcast('dailylist.newDay');
+        
+        return resp;
       })
 
     }

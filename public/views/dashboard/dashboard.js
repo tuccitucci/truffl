@@ -19,6 +19,7 @@ function dashboardCtrl($scope, $http, DailyList, FoodJournal, $stateParams, $sta
     setCurrentDate();
 
     DailyList.getDay(ctrl.currentDate, ctrl.currentDate)
+    .then(setSuggestion)
     .then(updateGraphs);
   }
 
@@ -34,6 +35,10 @@ function dashboardCtrl($scope, $http, DailyList, FoodJournal, $stateParams, $sta
   function nextDay() {
     var date = moment(ctrl.currentDate).add(1, 'days');
     $state.go('dashboard.date', {date: date.format('YYYYMMDD')})
+  }
+
+  function setSuggestion(data) {
+    ctrl.suggestions = data.suggestion;
   }
 
   // ---------------$scope.$watch to update graphs---------------

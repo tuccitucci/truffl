@@ -169,32 +169,32 @@ function makeASuggestion(list) {
   };
 
   var nutrientSuggestions = {
-    'Water': 'Drink A Glass of Water!',
-    'Energy': 'Eat More!',
-    'Protein': 'Eat a Steak!',
-    'Alcohol, ethyl': 'You might be stressed out, have a glass of wine.',
-    'Caffeine': 'Low on Caff',
-    'Carbohydrate': 'Low on Carbs',
-    'Fat': 'Low on Fat',
+    // 'Water': 'Drink A Glass of Water!',
+    // 'Energy': 'Eat More!',
+    // 'Protein': 'Eat a Steak!',
+    // 'Alcohol, ethyl': 'You might be stressed out, have a glass of wine.',
+    // 'Caffeine': 'Low on Caff',
+    // 'Carbohydrate': 'Low on Carbs',
+    // 'Fat': 'Low on Fat',
+    //
+    // 'Total lipid (fat)': 'Low on Fat',
+    // 'Fatty acids, total saturated': 'Low on this stuff',
+    // 'Fatty acids, total monounsaturated': 'Low on this stuff',
+    // 'Fatty acids, total polyunsaturated': 'Low on this stuff',
+    // '20:5 n-3 (EPA)': 'Low on this stuff',
+    // '22:5 n-3 (DPA)': 'Low on this stuff',
+    // '22:6 n-3 (DHA)': 'Low on this stuff',
+    // 'Cholesterol': 'Low on this stuff',
+    //
+    // 'Carbohydrate, by difference': 'Low on this stuff',
+    // 'Fiber, total dietary': 'Low on this stuff',
+    // 'Sugars, total': 'Low on this stuff',
 
-    'Total lipid (fat)': 'Low on Fat',
-    'Fatty acids, total saturated': 'Low on this stuff',
-    'Fatty acids, total monounsaturated': 'Low on this stuff',
-    'Fatty acids, total polyunsaturated': 'Low on this stuff',
-    '20:5 n-3 (EPA)': 'Low on this stuff',
-    '22:5 n-3 (DPA)': 'Low on this stuff',
-    '22:6 n-3 (DHA)': 'Low on this stuff',
-    'Cholesterol': 'Low on this stuff',
-
-    'Carbohydrate, by difference': 'Low on this stuff',
-    'Fiber, total dietary': 'Low on this stuff',
-    'Sugars, total': 'Low on this stuff',
-
-    'Calcium, Ca': 'Low on this stuff',
-    'Iron, Fe': 'Low on this stuff',
+    'Calcium, Ca': 'Try drinking more milk and eating more spinach.',
+    'Iron, Fe': 'Try eating more mussels.',
     'Magnesium, Mg': 'Low on this stuff',
     'Phosphorus, P': 'Low on this stuff',
-    'Potassium, K': 'Low on this stuff',
+    'Potassium, K': 'Add some Bananas to your breakfast routine, or throw one in as a midday snack.',
     'Sodium, Na': 'Low on this stuff',
     'Zinc, Zn': 'Low on this stuff',
     'Copper, Cu': 'A deficiency in copper results in poorly formed red blood cells, known as anemia. It also is an antioxidant, helping with the elimination of free radicals. Eat some Beef Liver or Sunflower seeds to improve this mineral.',
@@ -202,7 +202,7 @@ function makeASuggestion(list) {
 
     'Vitamin A, IU': 'Low on this stuff',
     'Thiamin': 'Try eating some more Pork to raise your B1.' ,
-    'Riboflavin': 'Low on this stuff',
+    'Riboflavin': 'Riboflavin is required for the proper development and function of the skin, lining of the digestive tract, blood cells, and many other parts of the body. Beef Liver, Lamb, and Whole Milk can increase your number here.',
     'Vitamin B-12': 'Low on this stuff',
     'Vitamin B-6': 'Low on this stuff',
     'Niacin': 'Low on this stuff',
@@ -215,18 +215,26 @@ function makeASuggestion(list) {
   var lowestVitamin = lowestNutrientPerCat(list.vitamins);
   var lowestMineral = lowestNutrientPerCat(list.minerals);
 
-  return {
-    lowVitamin: {
+  if (lowestVitamin) {
+    var vit = {
       name: _.keys(lowestVitamin)[0],
       value: lowestVitamin[_.keys(lowestVitamin)[0]],
       suggestion: nutrientSuggestions[_.keys(lowestVitamin)[0]]
-    },
-    lowMineral: {
+    };
+  }
+
+  if (lowestMineral) {
+    var min = {
       name: _.keys(lowestMineral)[0],
       value: lowestMineral[_.keys(lowestMineral)[0]],
       suggestion: nutrientSuggestions[_.keys(lowestMineral)[0]]
-    },
+    };
+  }
 
+
+  return {
+    lowVitamin: vit || {},
+    lowMineral: min || {}
   };
 }
 

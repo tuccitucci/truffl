@@ -303,7 +303,7 @@ body {
   padding: 0;
   text-align: center;
   color: white;
-  background-color: #4E2E34; }
+  background-color: aliceblue; }
 
 body.home,
 body.about,
@@ -359,5 +359,5 @@ a {
     color: white; }
 
 .well {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); }
